@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
+        app:titleTextColor="#FFF">
+
+        <ImageView
+            android:id="@+id/goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|start"
+            app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="@string/Settings"
+            android:textColor="@color/control_background"
+            android:textSize="18sp"
+            tools:ignore="RtlSymmetry" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/About"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/About"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/Term_and_Services"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/policy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:text="@string/Privacy_Policy"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/background_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/backups"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="7dp"
+            android:text="@string/Backup"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/faqs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="7dp"
+            android:text="FAQs"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="7dp"
+            android:text="@string/Help"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/background_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/signOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/lato"
+            android:gravity="left|start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="7dp"
+            android:text="@string/Signout"
+            android:textAllCaps="false"
+            android:textColor="@color/textColorGrey"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

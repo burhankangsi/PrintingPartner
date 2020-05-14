@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Lawyer_or_not">
+
+    <ImageView
+        android:id="@+id/nonLawyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/lawyerText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toEndOf="@+id/Lawyer"
+        app:layout_constraintTop_toTopOf="@+id/Lawyer"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_non_lawyer_unselected_new">
+
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/Lawyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="84dp"
+        app:layout_constraintBottom_toTopOf="@+id/lawyer_proceed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_lawyer_icon_unselected_new">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/lawyerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="@string/Lawyer"
+        app:layout_constraintEnd_toEndOf="@+id/Lawyer"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/Lawyer"
+        app:layout_constraintTop_toBottomOf="@+id/Lawyer">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/nonLawyerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="@string/Non_Lawyer"
+        app:layout_constraintEnd_toEndOf="@+id/nonLawyer"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/nonLawyer"
+        app:layout_constraintTop_toBottomOf="@+id/nonLawyer">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/lawyer_proceed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/button_bg_ripple"
+        android:fontFamily="@font/lato"
+        android:text="@string/Proceed"
+        android:textAllCaps="false"
+        android:textColor="@color/control_background"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="120dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/Please_select_your_profession"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+    </TextView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

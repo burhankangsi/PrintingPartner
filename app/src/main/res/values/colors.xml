@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#222020</color>
+    <color name="control_background">#ffff</color>
+    <color name="Red">#FF0000</color>
+    <color name="colorImage">#006666</color>
+
+    <color name="blue">#ff59a9ff</color>
+    <color name="orange">#ffff900d</color>
+    <color name="bottom_background_color">#ffc4c2bc</color>
+
+    <color name="polygonViewCircleStrokeColor">#59ff88</color>
+    <color name="polygonViewCircleBackground">#90e5f8ff</color>
+    <color name="back_ground">#123456</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#fff</color>
+    <color name="lawnics_splash_color">#C2272F</color>
+    <color name="splash_text_color">#ffff</color>
+    <color name="text_color">#000000</color>
+    <color name="textview_links">#2196F3</color>
+    <color name="grey">#7D7D7D</color>
+    <color name="textColorGrey">#414141</color>
+    <color name="green">#37DB0F</color>
+    <color name="background_color">#E2E2E2</color>
+    <color name="lightGrey">#BCBCBC</color>
+    <color name="starcolor">#d4af37</color>
+    <color name="colorMediaPickerBlue">#1e88e5</color>
+    <color name="colorMediaPickerWhite">#ffffff</color>
+</resources>

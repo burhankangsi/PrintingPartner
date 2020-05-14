@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="move">Move</string>
+    <string name="move_here">Move Here</string>
+    <string name="copy_here">Copy Here</string>
+</resources>

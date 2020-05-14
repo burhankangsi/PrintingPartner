@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BatchPagerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/options"
+        android:background="#E2E2E2"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <FrameLayout
+                android:id="@+id/sourceFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2Batch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:visibility="visible" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager2BatchCrop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone" />
+
+
+            </FrameLayout>
+
+            <com.lawnics.tech.PolygonView
+                android:id="@+id/polygonView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:background="@color/control_background">
+
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/ic_cancel"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/rotateleft"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/ic_left_rotations" />
+
+        <ImageView
+            android:id="@+id/rotateright"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/ic_right_rotations" />
+
+        <ImageView
+            android:id="@+id/resizePolygon"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/ic_resizeicon" />
+
+        <ImageView
+            android:id="@+id/submit"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:src="@drawable/ic_okay_icon" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_okay_icon" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/grievanceProgressBar"
+        layout="@layout/loadingbar" />
+</RelativeLayout>

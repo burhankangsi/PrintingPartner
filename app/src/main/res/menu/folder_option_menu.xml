@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/crop"
+        android:icon="@drawable/ic_searchicon"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_filter_icon"
+        android:iconTint="@color/white"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/more_option"
+        android:title=""
+        app:showAsAction="always" />
+</menu>

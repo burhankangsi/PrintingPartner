@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/edit"
+        android:icon="@drawable/ic_edit_icon"
+        android:title="@string/edit"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/reorder"
+        android:icon="@drawable/ic_move_icon"
+        android:title="Reorder"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_menu_share"
+        android:orderInCategory="100"
+        android:title="@string/share"
+        app:showAsAction="ifRoom" />
+</menu>

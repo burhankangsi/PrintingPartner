@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "920443516161",
+    "firebase_url": "https://lawnicstech-f06bc.firebaseio.com",
+    "project_id": "lawnicstech-f06bc",
+    "storage_bucket": "lawnicstech-f06bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920443516161:android:133ec54c5c4edeb3f65700",
+        "android_client_info": {
+          "package_name": "com.lawnics.printingpartner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920443516161-aicqrlh1urijcjb68gvgb3p2i90133p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWgnorTws5F23gTgPi0NLod8mwb2gNI2o"
+        },
+        {
+          "current_key": "AIzaSyBfg_DHuPgr7w_BJARnco-3ABAlXNsfM-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920443516161-aicqrlh1urijcjb68gvgb3p2i90133p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920443516161:android:378198418f401d27f65700",
+        "android_client_info": {
+          "package_name": "com.lawnics.tech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920443516161-0bd2cp6n8b18bkg16966eueqhmft083o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lawnics.tech",
+            "certificate_hash": "8671e3458dbe34ebd6c3f1b39d86d80d60c8cf8e"
+          }
+        },
+        {
+          "client_id": "920443516161-etlt8dcdqgu80n94hsdlsc8hs5apk0gh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lawnics.tech",
+            "certificate_hash": "1562f952b40bf0e21927a53ca26186d7b8100e75"
+          }
+        },
+        {
+          "client_id": "920443516161-uovmbnftlqi3augko9pbqc33arp052fn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lawnics.tech",
+            "certificate_hash": "f580a8348ae0de194ef599da0492b78b07e38a19"
+          }
+        },
+        {
+          "client_id": "920443516161-vptkal6mgu6er04a1f84o1ku7dvj5mmd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lawnics.tech",
+            "certificate_hash": "e6de32aa2126c2f6e4e70baa91efd08b5271fa57"
+          }
+        },
+        {
+          "client_id": "920443516161-aicqrlh1urijcjb68gvgb3p2i90133p9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWgnorTws5F23gTgPi0NLod8mwb2gNI2o"
+        },
+        {
+          "current_key": "AIzaSyBfg_DHuPgr7w_BJARnco-3ABAlXNsfM-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920443516161-aicqrlh1urijcjb68gvgb3p2i90133p9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

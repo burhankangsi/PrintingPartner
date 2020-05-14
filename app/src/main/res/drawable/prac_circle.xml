@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Larger blue circle -->
+    <item>
+        <shape android:shape="oval">
+            <padding
+                android:bottom="15dp"
+                android:left="15dp"
+                android:right="15dp"
+                android:top="15dp" />
+            <size
+                android:width="20dp"
+                android:height="20dp" />
+            <stroke
+                android:width="18dp"
+                android:color="@color/transparent" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <size
+                android:width="20dp"
+                android:height="20dp" />
+            <solid android:color="@color/polygonViewCircleBackground" />
+            <stroke
+                android:width="2dp"
+                android:color="@color/Red" />
+        </shape>
+    </item>
+</layer-list>
