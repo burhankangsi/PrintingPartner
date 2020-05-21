@@ -98,7 +98,7 @@
     <style name="RippleStyleBlack" parent="RippleStyleWhite">
         <item name="mrl_rippleColor">#8096989A</item>
     </style>
-    
+
     <style name="showCaseTitleStyle" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">20sp</item>
         <item name="font">@font/lato</item>

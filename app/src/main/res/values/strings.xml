@@ -153,4 +153,7 @@
     <string name="move">Move</string>
     <string name="move_here">Move Here</string>
     <string name="copy_here">Copy Here</string>
+    <string name="title_activity_order">OrderActivity</string>
+
+    <string name="home_second">Home Second</string>
 </resources>

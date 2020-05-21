@@ -10,21 +10,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity android:name=".PaperQualityActivity_color"></activity>
+        <activity android:name=".PaperSizeAct_color" />
+        <activity android:name=".ManagementActivity" />
+        <activity android:name=".PaperQualityActivity_white" />
+        <activity android:name=".PaperSizeActivity_white" />
+        <activity android:name=".Print_Paper" />
+        <activity android:name=".PaperProduct" />
+        <activity android:name=".DetailsActivity" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".OrderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".Onboarding_animationActivity"/>
-        <activity android:name=".LanguageActivity"/>
-        <activity android:name=".OTPActivity"/>
-        <activity android:name=".Verification1Activity"/>
-        <activity android:name=".Verification2Activity"/>
-        <activity android:name=".Verification3Activity"/>
-        <activity android:name=".VerifyCamera"/>
-        <activity android:name=".CreateAccount"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Onboarding_animationActivity" />
+        <activity android:name=".LanguageActivity" />
+        <activity android:name=".OTPActivity" />
+        <activity android:name=".Verification1Activity" />
+        <activity android:name=".Verification2Activity" />
+        <activity android:name=".Verification3Activity" />
+        <activity android:name=".VerifyCamera" />
+        <activity android:name=".CreateAccount" />
     </application>
 
 </manifest>

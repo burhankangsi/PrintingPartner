@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/card_view_management">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="7">
+
+
+        <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/iv_cv_prod_img_manage"
+        android:src="@drawable/ic_papersizeicon"
+        android:layout_weight="2"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_paper_type_manage"
+            android:text="White Paper"
+            android:clickable="true"
+            android:layout_marginTop="25dp"
+            android:layout_weight="5"
+            android:textColor="@color/colorPrimaryDark"/>
+
+<!--    <CheckBox-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:id="@+id/chk_box_cv_paper_qual_col"-->
+<!--        android:background="@color/colorMediaPickerWhite"-->
+<!--        android:layout_weight="0.25"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginRight="20dp"-->
+<!--        />-->
+
+<!--            <CheckBox-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/chk_box_management"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginRight="15dp"-->
+<!--                android:background="#ffffff"/>-->
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:id="@+id/iv_arrow_cv_manage"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/right_arrow"
+                android:background="@color/colorPrimaryDark"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

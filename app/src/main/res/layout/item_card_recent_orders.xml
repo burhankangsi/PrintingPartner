@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/card_view_recent_order">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
+            android:weightSum="8">
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:layout_weight="1">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:id="@+id/tv_status_cv_prev_ord"-->
+            <!--                    android:textColor="@color/colorPrimaryDark"-->
+            <!--                    android:textStyle="bold"-->
+            <!--                    />-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:id="@+id/tv_status_time_cv_prev_ord"-->
+            <!--                    android:textColor="@color/grey"-->
+            <!--                    />-->
+
+            <!--            </LinearLayout>-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/tv_status_cv_rec_ord"-->
+<!--                android:text="@string/Delivered"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:layout_marginBottom="2dp"-->
+<!--                android:layout_marginLeft="2dp"-->
+<!--                />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="6"
+                android:layout_marginTop="2dp"
+                android:weightSum="6">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/circular_img_view_cv_recent_orders"
+                    android:src="@drawable/lawnics"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="4"
+                    android:layout_marginLeft="3dp"
+                    android:weightSum="5.5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_cust_name_cv_rec_ord"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="Anand Pal Singh"
+                        android:layout_weight="1"
+                        android:layout_marginTop="3dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_order_no_cv_rec_ord"
+                        android:textColor="@color/grey"
+                        android:text="Order No:-"
+                        android:layout_weight="1"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_location_rec_ord"
+                            android:src="@drawable/ic_locationicon"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_location_cv_rec_ord"
+                            android:text="Location"
+                            android:textColor="@color/grey"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_pages_rec_ord"
+                            android:src="@drawable/ic_pagesicon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_docs_cv_rec_ord"
+                            android:text="2 doc"
+                            android:textColor="@color/grey"
+                            android:layout_weight="0.20"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_pages_cv_rec_ord"
+                            android:text="400 pages"
+                            android:textColor="@color/grey"
+                            android:layout_marginLeft="1dp"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_timr_rec_ord"
+                            android:src="@drawable/ic_a4_icon_new"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_time_cv_rec_ord"
+                            android:text="12:40 PM"
+                            android:textColor="@color/grey"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_details_cv_rec_ord"
+                        android:textColor="@color/grey"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:text="Details"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_rec_cv_rec_ord_price"
+                    android:text="400"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="160dp"
+                    android:layout_height="42dp"
+                    android:id="@+id/btn_cv_rec_orders_btn1"
+                    android:layout_marginLeft="8dp"
+                    android:text="Accept"
+                    android:background="@color/green"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="160dp"
+                    android:layout_height="42dp"
+                    android:id="@+id/btn_cv_rec_orders_btn2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Decline"
+                    android:background="@color/red"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
