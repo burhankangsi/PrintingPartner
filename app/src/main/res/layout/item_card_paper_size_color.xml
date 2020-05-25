@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/chk_box_cv_paper_size_col"
         android:layout_marginTop="20dp"
-        android:background="#ffffff"/>
+        android:background="@color/grey"/>
 
         </LinearLayout>
 

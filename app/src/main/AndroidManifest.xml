@@ -36,7 +36,8 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+        </activity>
         <activity android:name=".Onboarding_animationActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".OTPActivity" />

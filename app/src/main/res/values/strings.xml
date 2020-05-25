@@ -93,6 +93,8 @@
     <string name="Received">Received</string>
     <string name="Added">Added</string>
     <string name="Apply">Apply</string>
+    <string name="Tab_text_1" translatable="false">Previous Orders</string>
+    <string name="Tab_text_2" translatable="false">Recent Orders</string>
     <string name="All_documents">All documents</string>
     <string name="ID_card">ID card</string>
     <string name="Create_new_folder">Create new folder</string>

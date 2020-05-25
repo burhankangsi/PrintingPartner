@@ -53,8 +53,8 @@ public class PaperSize_white_Adapter extends RecyclerView.Adapter<PaperSize_whit
         holder.prod_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ManagementActivity.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, ManagementActivity.class);
+////                mContext.startActivity(intent);
             }
         });
     }

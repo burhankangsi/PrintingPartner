@@ -28,26 +28,33 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:layout_weight="1"
-            android:id="@+id/btn1_orders_prev"
-            android:text="@string/Recent_orders"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/btn1_orders_prev"-->
+<!--            android:text="@string/Recent_orders"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:textStyle="bold"-->
+<!--            />-->
 
-        <androidx.appcompat.widget.AppCompatButton
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            android:id="@+id/btn2_orders_rec"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/Previous_orders"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:textStyle="bold"-->
+<!--            />-->
+
+        <com.google.android.material.tabs.TabLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimaryDark"
-            android:id="@+id/btn2_orders_rec"
-            android:layout_weight="1"
-            android:text="@string/Previous_orders"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
+            android:id="@+id/tablayout1"
             />
 
 

@@ -50,15 +50,15 @@ public class Management_Adapter extends RecyclerView.Adapter<Management_Adapter.
         holder.menu_iv_manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
+//                mContext.startActivity(intent);
             }
         });
 
         holder.paper_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, PaperQualityActivity_color.class);
+                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
                 mContext.startActivity(intent);
             }
         });
@@ -66,8 +66,8 @@ public class Management_Adapter extends RecyclerView.Adapter<Management_Adapter.
         holder.prod_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
+//                mContext.startActivity(intent);
             }
         });
 

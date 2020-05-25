@@ -109,16 +109,22 @@ public class DetailsActivity extends AppCompatActivity {
                                                     if (attributes.getKey().equals("credits")) {
                                                         recentOrdModel.setCredits(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("file")) {
+                                                    if (attributes.getKey().equals("credits")) {
+                                                        recentOrdModel.setPaper_size(attributes.getValue().toString());
+                                                    }
+                                                    if (attributes.getKey().equals("credits")) {
                                                         recentOrdModel.setOrd_no(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("gsm")) {
+                                                    if (attributes.getKey().equals("credits")) {
                                                         recentOrdModel.setGSM(attributes.getValue().toString());
                                                     }
                                                     if (attributes.getKey().equals("image")) {
                                                         recentOrdModel.setDoc_image(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("pages")) {
+                                                    if (attributes.getKey().equals("credits")) {
+                                                        recentOrdModel.setNo_of_docs(attributes.getValue().toString());
+                                                    }
+                                                    if (attributes.getKey().equals("credits")) {
                                                         recentOrdModel.setNo_of_pages(attributes.getValue().toString());
                                                     }
                                                     if (attributes.getKey().equals("paper_color")) {

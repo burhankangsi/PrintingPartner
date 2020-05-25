@@ -62,8 +62,8 @@ public class Paper_quality_wh_adapter extends RecyclerView.Adapter<Paper_quality
         holder.prod_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, PaperSizeActivity_white.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, PaperSizeActivity_white.class);
+//                mContext.startActivity(intent);
             }
         });
 

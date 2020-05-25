@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight="4"
+                    android:layout_weight="5"
                     android:layout_marginLeft="3dp"
                     android:weightSum="5">
 
@@ -100,7 +100,7 @@
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="15dp"
+                            android:layout_height="20dp"
                             android:id="@+id/iv_pages_details"
                             android:src="@drawable/ic_pagesicon"/>
 
@@ -119,7 +119,6 @@
                             android:id="@+id/tv_docs_cv_details"
                             android:text="2 doc"
                             android:textColor="@color/grey"
-                            android:layout_weight="0.20"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -128,7 +127,6 @@
                             android:text="400 pages"
                             android:textColor="@color/grey"
                             android:layout_marginLeft="1dp"
-                            android:layout_weight="1"
                             />
 
                     </LinearLayout>
@@ -137,66 +135,70 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="3dp"
+                        android:weightSum="8">
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="15dp"
+                            android:layout_height="20dp"
                             android:id="@+id/iv_page_details"
-                            android:src="@drawable/ic_pagesicon"/>
+                            android:src="@drawable/ic_pagesicon"
+                            android:layout_marginTop="3dp"
+                            android:layout_weight="1"/>
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:id="@+id/tv_page_size_cv_details"
                             android:text="A4"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="1"
+
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:id="@+id/tv_page_color_cv_details"
                             android:text="Green"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="1"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:id="@+id/tv_page_type_cv_details"
                             android:text="Coloured"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="1"
                             />
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:id="@+id/tv_gsm_val_cv_details"
                             android:text="80"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="1"
                             />
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:id="@+id/tv_gsm_cv_details"-->
+<!--                            android:text="GSM"-->
+<!--                            android:textColor="@color/grey"-->
+<!--                            android:layout_weight="1"-->
+<!--                            />-->
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tv_gsm_cv_details"
-                            android:text="GSM"
-                            android:textColor="@color/grey"
-                            android:layout_weight="1"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="20dp"
                             android:id="@+id/tv_orientation_cv_details"
                             android:text="@string/Portrait"
+                            android:layout_marginLeft="3dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="1"
                             />
 
 
@@ -210,7 +212,8 @@
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="15dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="3dp"
                             android:id="@+id/iv_time_details"
                             android:src="@drawable/ic_a4_icon_new"/>
 
@@ -234,22 +237,24 @@
                     android:layout_marginTop="3dp"
                     >
 
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_details_cv_price"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="100"
-                    android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/tv_details_cv_price"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="100"
+                        android:layout_marginRight="5dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="100dp"
+                    <TextView
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_details_cv_credits"
                     android:textColor="@color/grey"
                     android:textStyle="bold"
+                        android:layout_marginRight="5dp"
                     android:layout_marginTop="2dp"
                     android:text="Credits"
                     android:layout_weight="1"/>

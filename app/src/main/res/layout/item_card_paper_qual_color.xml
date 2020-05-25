@@ -20,8 +20,8 @@
 
 
         <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:id="@+id/iv_cv_paper_qual_col"
         android:src="@drawable/ic_papersizeicon"
         android:layout_weight="2"
@@ -71,12 +71,14 @@
 <!--        android:background="#ffffff"/>-->
 
             <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="35dp"
+                android:layout_height="20dp"
                 android:id="@+id/iv_arrow_cv_paper_qual_col"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/right_arrow"
-                android:background="@color/colorPrimaryDark"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/right_arr"
+                android:background="@drawable/right_arr"
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
