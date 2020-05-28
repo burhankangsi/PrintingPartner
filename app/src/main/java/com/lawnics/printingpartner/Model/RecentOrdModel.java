@@ -10,6 +10,16 @@ public class RecentOrdModel {
     String no_pages;
     String no_docs;
 
+    public String getStatus_time() {
+        return status_time;
+    }
+
+    public void setStatus_time(String status_time) {
+        this.status_time = status_time;
+    }
+
+    String status_time;
+
     public RecentOrdModel(String custName) {
         this.custName = custName;
     }
@@ -62,13 +72,6 @@ public class RecentOrdModel {
         this.itemPrice = itemPrice;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getTime() {
         return time;
@@ -85,7 +88,7 @@ public class RecentOrdModel {
 
 
     public RecentOrdModel(String fileName, String cust_image, String ord_no, String loc, String no_pages, String no_docs
-    , String price, String status, String time) {
+    , String price, String status, String time, String s_time) {
         this.custName = fileName;
         this.cust_image = cust_image;
         this.ord_no = ord_no;
@@ -95,6 +98,7 @@ public class RecentOrdModel {
         this.itemPrice = price;
         this.status = status;
         this.time = time;
+        this.status_time = s_time;
     }
 
     public String getFileName() {

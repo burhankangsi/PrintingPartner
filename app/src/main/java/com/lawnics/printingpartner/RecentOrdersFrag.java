@@ -98,9 +98,12 @@ public class RecentOrdersFrag extends Fragment {
                                                     if (attributes.getKey().equals("credits")){
                                                         recentOrdModel.setItemPrice(attributes.getValue().toString());
                                                     }
+                                                    if (attributes.getKey().equals("credits")){
+                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                                    }
 
                                                     if (attributes.getKey().equals("paper_color")){
-                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                                        recentOrdModel.setFileName(attributes.getValue().toString());
                                                     }
                                                     // This one ok
                                                     if (attributes.getKey().equals("gsm")){
@@ -117,8 +120,8 @@ public class RecentOrdersFrag extends Fragment {
                                                     if (attributes.getKey().equals("paper_color")){
                                                         recentOrdModel.setNo_docs(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("status")){
-                                                        recentOrdModel.setStatus(attributes.getValue().toString());
+                                                    if (attributes.getKey().equals("credits")){
+                                                        recentOrdModel.setStatus_time(attributes.getValue().toString());
                                                     }
                                                 }
                                                 recentOrdModelList.add(recentOrdModel);

@@ -77,7 +77,7 @@ public class PrevOrdersFragAdapter extends RecyclerView.Adapter<PrevOrdersFragAd
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cust_name = itemView.findViewById(R.id.tv_cust_name_cv_prev_ord);
-            order_no = itemView.findViewById(R.id.tv_order_no_cv_prev_ord);
+            order_no = itemView.findViewById(R.id.tv_order_no_cv_prev_ord_val);
             location = itemView.findViewById(R.id.tv_location_cv_prev_ord);
             doc_no = itemView.findViewById(R.id.tv_docs_cv_prev_ord);
             pages = itemView.findViewById(R.id.tv_pages_cv_prev_ord);

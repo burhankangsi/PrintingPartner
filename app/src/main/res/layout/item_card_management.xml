@@ -21,13 +21,13 @@
 
 
         <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
         android:id="@+id/iv_cv_prod_img_manage"
         android:src="@drawable/ic_papersizeicon"
         android:layout_weight="2"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="25dp"/>
 
 
         <TextView
@@ -38,6 +38,9 @@
             android:clickable="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
+            android:paddingTop="5dp"
+            android:textSize="16sp"
+            android:paddingLeft="5dp"
             android:layout_weight="5"
             android:textColor="@color/colorPrimaryDark"/>
 
@@ -61,10 +64,10 @@
 <!--                android:background="#ffffff"/>-->
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
                 android:id="@+id/iv_arrow_cv_manage"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="5dp"
                 android:src="@drawable/right_arr"
                 android:background="@drawable/right_arr"

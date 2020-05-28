@@ -59,7 +59,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         holder.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ManagementActivity.class);
+                Intent intent = new Intent(mContext, DetailsActivity.class);
                 mContext.startActivity(intent);
             }
         });
@@ -67,8 +67,8 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         holder.accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, DetailsActivity.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, DetailsActivity.class);
+//                mContext.startActivity(intent);
 
             }
         });
@@ -76,8 +76,8 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         holder.decline_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, DetailsActivity.class);
-                mContext.startActivity(intent);
+//                Intent intent = new Intent(mContext, DetailsActivity.class);
+//                mContext.startActivity(intent);
             }
         });
     }
@@ -96,7 +96,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cust_name = itemView.findViewById(R.id.tv_cust_name_cv_rec_ord);
-            order_no = itemView.findViewById(R.id.tv_order_no_cv_rec_ord);
+            order_no = itemView.findViewById(R.id.tv_order_no_cv_rec_ord_val);
             location = itemView.findViewById(R.id.tv_location_cv_rec_ord);
             doc_no = itemView.findViewById(R.id.tv_docs_cv_rec_ord);
             pages = itemView.findViewById(R.id.tv_pages_cv_rec_ord);

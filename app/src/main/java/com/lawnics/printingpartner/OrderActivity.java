@@ -41,6 +41,8 @@ public class OrderActivity extends AppCompatActivity {
     private View navHeader;
     private TextView tv_nav_header;
     private ImageView imgView;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         //navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
@@ -83,9 +78,9 @@ public class OrderActivity extends AppCompatActivity {
                 .setDrawerLayout(drawer)
                 .build();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
        // NavigationView navView = findViewById(R.id.nav_view);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -93,34 +88,18 @@ public class OrderActivity extends AppCompatActivity {
         toggle.syncState();
 
 //        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
-        NavigationUI.setupWithNavController(navigationView, navController);
+      //  NavigationUI.setupWithNavController(navigationView, navController);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = findViewById(R.id.view_pager_order_activity);
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+      //  SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+         viewPager = (ViewPager) findViewById(R.id.view_pager_order_activity);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+      //  viewPager.setAdapter(sectionsPagerAdapter);
+        setupViewPager(viewPager);
 
+        tabLayout.setupWithViewPager(viewPager);
 
-
-//        btn_prevOrd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Fragment fragment = new PreviousOrdersFrag();
-//                displaySelectedFragment(fragment);
-//            }
-//        });
-//
-//        btn_recOrd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Fragment fragment = new RecentOrdersFrag();
-//                displaySelectedFragment(fragment);
-//            }
-//        });
-//
    }
+
 
 
 
@@ -128,34 +107,23 @@ public class OrderActivity extends AppCompatActivity {
     private void displaySelectedFragment(Fragment fragment)
     {
         FragmentManager fragmentManager=getSupportFragmentManager();
+        //fragmentManager.popBackStack();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         //fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
         //  android.R.anim.fade_out);
-        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                 // fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
         //fragmentTransaction.addToBackStack(null);
+
         fragmentTransaction.commit();
     }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        // Handle navigation view item clicks here.
-//        int id = menuItem.getItemId();
-//        Fragment fragment = null;
-//
-//        if (id == R.id.nav_prev_orders) {
-//            fragment = new PreviousOrdersFrag();
-//            displaySelectedFragment(fragment);
-//        }
-//        else if (id == R.id.nav_recent_orders) {
-//            fragment = new RecentOrdersFrag();
-//            displaySelectedFragment(fragment);
-//
-//        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
+    private void setupViewPager(ViewPager viewPager)
+    {
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        sectionsPagerAdapter.addFragment(new PreviousOrdersFrag(), "Previous Orders");
+        sectionsPagerAdapter.addFragment(new RecentOrdersFrag(), "Recent Orders");
+        viewPager.setAdapter(sectionsPagerAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -164,10 +132,10 @@ public class OrderActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+//                || super.onSupportNavigateUp();
+//    }
 }

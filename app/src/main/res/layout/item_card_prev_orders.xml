@@ -17,8 +17,8 @@
             android:orientation="vertical"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="5dp"
-            android:weightSum="7">
-
+            >
+<!--            android:weightSum="7" -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,19 +26,22 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_status_cv_prev_ord"
                     android:text="@string/Delivered"
-                    android:layout_marginLeft="9dp"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="15dp"
                     android:layout_margin="5dp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textStyle="bold"
                     />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="18dp"
+                    android:text="6:30 am"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="130dp"
                     android:id="@+id/tv_status_time_cv_prev_ord"
                     android:textColor="@color/grey"
                     />
@@ -49,16 +52,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_weight="6"
-                android:weightSum="6">
 
+                android:weightSum="6">
+<!--                android:layout_weight="6"-->
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:id="@+id/circular_img_view_cv_prev_orders"
                     android:src="@drawable/ic_lawyer_icon_selected_new"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"/>
 
 
@@ -72,20 +75,12 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="20sp"
                         android:id="@+id/tv_cust_name_cv_prev_ord"
                         android:textColor="@color/colorPrimaryDark"
                         android:text="Anand Pal Singh"
-                        android:layout_weight="1"
-                        android:layout_marginTop="3dp"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tv_order_no_cv_prev_ord"
-                        android:text="Order No:"
-                        android:textColor="@color/grey"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="7dp"
                         android:layout_weight="1"
                         />
 
@@ -93,11 +88,39 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:weightSum="1.5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="15sp"
+                        android:id="@+id/tv_order_no_cv_prev_ord"
+                        android:text="Order No:-"
+                        android:layout_marginLeft="4dp"
+                        android:textColor="@color/grey"
+                        android:paddingLeft="3dp"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_order_no_cv_prev_ord_val"
+                        android:text="44416458"
+                        android:textColor="@color/grey"
+                        android:layout_weight="0.5"
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="15dp"
+                            android:layout_marginLeft="1dp"
                             android:id="@+id/iv_location_prev_ord"
                             android:src="@drawable/ic_locationicon"/>
 
@@ -115,7 +138,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -156,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -183,7 +206,11 @@
                     android:id="@+id/tv_prev_cv_prev_ord_price"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_marginTop="16dp"
                     android:text="100"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="50dp"
                     android:layout_weight="1"/>
 
             </LinearLayout>

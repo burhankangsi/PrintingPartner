@@ -78,8 +78,8 @@ public class PaperSizeActivity_white extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(PaperSizeActivity_white.this, ManagementActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PaperSizeActivity_white.this, ManagementActivity.class);
+//////                startActivity(intent);
             }
         });
 

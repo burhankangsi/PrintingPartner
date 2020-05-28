@@ -106,8 +106,11 @@ public class PreviousOrdersFrag extends Fragment {
                                     if (attributes.getKey().equals("credits")){
                                         recentOrdModel.setItemPrice(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("paper_color")){
+                                    if (attributes.getKey().equals("credits")){
                                         recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("paper_color")){
+                                        recentOrdModel.setFileName(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("gsm")){
                                         recentOrdModel.setLocation(attributes.getValue().toString());

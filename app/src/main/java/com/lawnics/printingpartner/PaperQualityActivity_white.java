@@ -126,7 +126,7 @@ public class PaperQualityActivity_white extends AppCompatActivity {
 //                                                    if (attributes.getKey().equals("file")) {
 //                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
 //                                                    }
-                                                    if (attributes.getKey().equals("gsm")) {
+                                                    if (attributes.getKey().equals("credits")) {
                                                         recentOrdModel.setGsm(attributes.getValue().toString());
                                                     }
                                                     if (attributes.getKey().equals("image")) {

@@ -15,57 +15,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="5dp"
             android:weightSum="8">
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:layout_weight="1">-->
+            <TextView
+                android:id="@+id/tv_status_time_cv_recent_ord"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="130dp"
+                android:textSize="14sp"
+                android:text="6:30 am"
+                android:textColor="@color/grey" />
 
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:id="@+id/tv_status_cv_prev_ord"-->
-            <!--                    android:textColor="@color/colorPrimaryDark"-->
-            <!--                    android:textStyle="bold"-->
-            <!--                    />-->
-
-            <!--                <TextView-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:id="@+id/tv_status_time_cv_prev_ord"-->
-            <!--                    android:textColor="@color/grey"-->
-            <!--                    />-->
-
-            <!--            </LinearLayout>-->
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/tv_status_cv_rec_ord"-->
-<!--                android:text="@string/Delivered"-->
-<!--                android:textColor="@color/colorPrimary"-->
-<!--                android:layout_marginBottom="2dp"-->
-<!--                android:layout_marginLeft="2dp"-->
-<!--                />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="6"
-                android:layout_marginTop="2dp"
                 android:weightSum="6">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="100dp"
+                    android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:id="@+id/circular_img_view_cv_recent_orders"
-                    android:src="@drawable/lawnics"
+                    android:src="@drawable/ic_lawyer_icon_selected_new"
                     android:layout_marginLeft="3dp"
+                    android:paddingLeft="10dp"
                     android:layout_marginRight="5dp"
+                    android:paddingBottom="15dp"
                     android:layout_weight="1"/>
 
 
@@ -83,23 +63,42 @@
                         android:id="@+id/tv_cust_name_cv_rec_ord"
                         android:textColor="@color/colorPrimaryDark"
                         android:text="Anand Pal Singh"
-                        android:layout_weight="1"
-                        android:layout_marginTop="3dp"
-                        />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/tv_order_no_cv_rec_ord"
-                        android:textColor="@color/grey"
-                        android:text="Order No:-"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="7dp"
                         android:layout_weight="1"
                         />
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:weightSum="1.5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="18sp"
+                        android:id="@+id/tv_order_no_cv_rec_ord"
+                        android:layout_marginLeft="7dp"
+                        android:padding="1dp"
+                        android:textColor="@color/grey"
+                        android:text="Order No:-"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_order_no_cv_rec_ord_val"
+                        android:text="44416458"
+                        android:textColor="@color/grey"
+                        android:layout_weight="0.5"
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -112,6 +111,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_location_cv_rec_ord"
                             android:text="Location"
+                            android:layout_marginLeft="8dp"
                             android:textColor="@color/grey"
                             android:layout_weight="1"
                             />
@@ -121,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -134,8 +134,9 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_docs_cv_rec_ord"
                             android:text="2 doc"
+                            android:layout_marginLeft="5dp"
                             android:textColor="@color/grey"
-                            android:layout_weight="0.20"
+                            android:layout_weight="0.12"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -151,7 +152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="3dp">
+                        android:layout_marginTop="4dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -165,6 +166,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_time_cv_rec_ord"
                             android:text="12:40 PM"
+                            android:layout_marginLeft="2dp"
                             android:textColor="@color/grey"
                             android:layout_weight="1"
                             />
@@ -178,6 +180,8 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:text="Details"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginLeft="9dp"
                         />
                 </LinearLayout>
 
@@ -186,6 +190,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_rec_cv_rec_ord_price"
                     android:text="400"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textStyle="bold"
