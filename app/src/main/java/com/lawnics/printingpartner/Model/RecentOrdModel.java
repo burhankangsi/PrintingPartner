@@ -9,6 +9,16 @@ public class RecentOrdModel {
     String location;
     String no_pages;
     String no_docs;
+    String file_path;
+    String filename;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     public String getStatus_time() {
         return status_time;
@@ -19,6 +29,30 @@ public class RecentOrdModel {
     }
 
     String status_time;
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
+    public String getFile_path() {
+        return file_path;
+    }
+
+    public void setFile_path(String file_path) {
+        this.file_path = file_path;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public RecentOrdModel(String custName) {
         this.custName = custName;

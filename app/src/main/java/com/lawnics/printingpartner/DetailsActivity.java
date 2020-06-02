@@ -3,6 +3,7 @@ package com.lawnics.printingpartner;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,6 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     List<DetailActivityModel> detailActivityModelList;
 
+    private Toolbar toolbar;
     private TextView no_of_pages, credits, total_amt;
     private AppCompatButton accept_detail, decline_detail;
 
@@ -46,6 +48,9 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        toolbar = findViewById(R.id.toolbar_act_details);
+        setSupportActionBar(toolbar);
 
         detailActivityModelList = new ArrayList<>();
         details_rv = (RecyclerView) findViewById(R.id.rv_details_activity);

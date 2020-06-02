@@ -93,6 +93,7 @@ public class RecentOrdersFrag extends Fragment {
                                         for (DataSnapshot time :date.getChildren()){
                                             recentOrdModel.setTime(time.getKey());
                                             for (DataSnapshot fileName : time.getChildren()){
+                                                recentOrdModel.setFilename(fileName.getKey());
                                                 //   RecentOrdModel recentOrdModel = new RecentOrdModel(fileName.getKey());
                                                 for (DataSnapshot attributes : fileName.getChildren()) {
                                                     if (attributes.getKey().equals("credits")){
@@ -122,6 +123,9 @@ public class RecentOrdersFrag extends Fragment {
                                                     }
                                                     if (attributes.getKey().equals("credits")){
                                                         recentOrdModel.setStatus_time(attributes.getValue().toString());
+                                                    }
+                                                    if (attributes.getKey().equals("file")){
+                                                        recentOrdModel.setFile_path(attributes.getValue().toString());
                                                     }
                                                 }
                                                 recentOrdModelList.add(recentOrdModel);

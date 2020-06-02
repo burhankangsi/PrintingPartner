@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/card_view_recent_order_accepted">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp"
+            android:weightSum="8">
+
+            <TextView
+                android:id="@+id/tv_status_time_cv_recent_ord_accepted"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="130dp"
+                android:textSize="14sp"
+                android:text="6:30 am"
+                android:textColor="@color/grey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="6"
+                android:weightSum="6">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/circular_img_view_cv_recent_orders_accepted"
+                    android:src="@drawable/ic_lawyer_icon_selected_new"
+                    android:layout_marginLeft="3dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="15dp"
+                    android:layout_weight="1"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="4"
+                    android:layout_marginLeft="3dp"
+                    android:weightSum="5.5">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_cust_name_cv_rec_ord_accepted"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="Anand Pal Singh"
+                        android:textSize="17sp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_weight="1"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1.5">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="18sp"
+                            android:id="@+id/tv_order_no_cv_rec_ord_accepted"
+                            android:layout_marginLeft="7dp"
+                            android:padding="1dp"
+                            android:textColor="@color/grey"
+                            android:text="Order No:-"
+                            android:layout_weight="1"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_order_no_cv_rec_ord_val_accepted"
+                            android:text="44416458"
+                            android:textColor="@color/grey"
+                            android:layout_weight="0.5"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_location_rec_ord_accepted"
+                            android:src="@drawable/ic_locationicon"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_location_cv_rec_ord_accepted"
+                            android:text="Location"
+                            android:layout_marginLeft="8dp"
+                            android:textColor="@color/grey"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_pages_rec_ord_accepted"
+                            android:src="@drawable/ic_pagesicon"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_docs_cv_rec_ord_accepted"
+                            android:text="2 doc"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/grey"
+                            android:layout_weight="0.12"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_pages_cv_rec_ord_accepted"
+                            android:text="400 pages"
+                            android:textColor="@color/grey"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="15dp"
+                            android:id="@+id/iv_timr_rec_ord_accepted"
+                            android:src="@drawable/ic_a4_icon_new"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tv_time_cv_rec_ord_accepted"
+                            android:text="12:40 PM"
+                            android:layout_marginLeft="2dp"
+                            android:textColor="@color/grey"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_details_cv_rec_ord_accepted"
+                        android:textColor="@color/green"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:text="Accepted"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginLeft="9dp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_rec_cv_rec_ord_price_accepted"
+                    android:text="400"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="160dp"
+                android:layout_height="36dp"
+                android:id="@+id/btn_cv_rec_orders_complete"
+                android:layout_marginRight="15dp"
+                android:text="Complete"
+                android:background="@color/green"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
