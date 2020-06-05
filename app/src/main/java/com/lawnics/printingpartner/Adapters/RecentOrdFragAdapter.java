@@ -31,6 +31,7 @@ import com.lawnics.printingpartner.DetailsActivity;
 import com.lawnics.printingpartner.ManagementActivity;
 import com.lawnics.printingpartner.Model.RecentOrdModel;
 import com.lawnics.printingpartner.PaperProduct;
+import com.lawnics.printingpartner.Print_Paper;
 import com.lawnics.printingpartner.R;
 import com.squareup.picasso.Picasso;
 
@@ -187,7 +188,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         @Override
         protected void onPostExecute(List<String> strings) {
             super.onPostExecute(strings);
-            Intent intent = new Intent(mContext,PaperProduct.class);
+            Intent intent = new Intent(mContext, Print_Paper.class);
             intent.putStringArrayListExtra("images", (ArrayList<String>) strings);
             ((Activity)mContext).startActivity(intent);
         }

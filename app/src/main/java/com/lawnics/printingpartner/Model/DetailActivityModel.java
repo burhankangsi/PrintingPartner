@@ -108,11 +108,13 @@ public class DetailActivityModel {
 
     String no_of_docs;
 
-    public DetailActivityModel(String document_name, String doc_image, String ord_no, String paper_color, String paper_type, String no_of_docs
+    public DetailActivityModel(String document_name, String doc_image, String ord_no, String fileName, String filePath, String paper_color, String paper_type, String no_of_docs
                                ,String no_of_pages, String GSM, String orientation, String paper_size, String credits, String time) {
         this.document_name = document_name;
         this.doc_image = doc_image;
         this.ord_no = ord_no;
+        this.fileName = fileName;
+        this.filePath = filePath;
         this.no_of_docs = no_of_docs;
         this.paper_color = paper_color;
         this.paper_type = paper_type;
@@ -125,6 +127,25 @@ public class DetailActivityModel {
     }
 
     String ord_no;
+    String fileName;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    String filePath;
     String paper_color;
     String paper_type;
     String no_of_pages;

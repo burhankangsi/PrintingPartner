@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.viewpager2.widget.ViewPager2;
 import com.lawnics.printingpartner.Model.PaperProductModel;
 import com.lawnics.printingpartner.Model.Print_Paper_Model;
 import com.lawnics.printingpartner.R;
@@ -20,6 +20,7 @@ public class PrintPaperAdapter extends RecyclerView.Adapter<PrintPaperAdapter.Vi
 
     private Context mContext;
     private List<Print_Paper_Model> itemList;
+
     public PrintPaperAdapter(Context mContext, List<Print_Paper_Model> itemList)
     {
         this.mContext = mContext;
@@ -51,7 +52,7 @@ public class PrintPaperAdapter extends RecyclerView.Adapter<PrintPaperAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            prod_img = itemView.findViewById(R.id.img_cv_paper_prod);
+            prod_img = itemView.findViewById(R.id.img_cv_print_paper);
 
         }
     }

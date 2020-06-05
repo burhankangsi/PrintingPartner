@@ -66,7 +66,6 @@ public class PaperProduct extends AppCompatActivity {
     public ImageView paper_img;
     private AppCompatButton btn_accept, btn_decline;
 
-    private RecyclerView details_rv;
     private ViewPager2 paper_prod_vp;
     DatabaseReference databaseReference;
     PaperProductAdapter paperProductAdapter;
@@ -103,6 +102,7 @@ public class PaperProduct extends AppCompatActivity {
             System.out.println(path);
             paperProductModelList.add(new PaperProductModel(path));
         }
+
         paper_prod_vp.setAdapter(paperProductAdapter);
         //new LoadImagesTask().execute();
         btn_accept.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +150,7 @@ public class PaperProduct extends AppCompatActivity {
                                 if (name.getKey().equals("first_name")) {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
-
+                                    cust_name.setText(customer_name[0]);
                                     PaperProductModel recentOrdModel = new PaperProductModel(customer_name[0]);
                                     for (DataSnapshot date : customerID.getChildren()) {
                                         for (DataSnapshot time : date.getChildren()) {
@@ -166,20 +166,21 @@ public class PaperProduct extends AppCompatActivity {
                                                       //  String filename = attributes.getKey();
                                                         String url = attributes.getValue().toString();
                                                         urls.add(url);
+                                                        new LoadImagesTask();
                                                     }
                                                     if (attributes.getKey().equals("pages")) {
                                                         //recentOrdModel.setPaper_size(attributes.getValue().toString());
-                                                        cust_name.setText(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("pages")) {
-                                                        //recentOrdModel.setOrd_no(attributes.getValue().toString());
                                                         no_of_pages.setText(attributes.getValue().toString());
+                                                    }
+                                                    if (attributes.getKey().equals("image")) {
+                                                        recentOrdModel.setImages(attributes.getValue().toString());
+                                                        //no_of_pages.setText(attributes.getValue().toString());
                                                     }
 //
                                                 }
-                                                //paperProductModelList.add(recentOrdModel);
+                                                paperProductModelList.add(recentOrdModel);
                                             }
-                                            //paperProductAdapter.notifyItemInserted(paperProductModelList.size() - 1);
+                                            paperProductAdapter.notifyItemInserted(paperProductModelList.size() - 1);
                                         }
                                     }
                                 }

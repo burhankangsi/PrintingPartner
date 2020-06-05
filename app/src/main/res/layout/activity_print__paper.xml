@@ -39,13 +39,11 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_print_paper_activity"
+        <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:id="@+id/viewpager_print_paper"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,6 +85,7 @@
                             android:layout_height="wrap_content"
                             android:text="2"
                             android:textSize="16dp"
+                            android:id="@+id/tv_print_paper_copies"
                             android:textColor="@color/colorPrimaryDark"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="20dp"/>
@@ -105,6 +104,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/Portrait"
                             android:textSize="16dp"
+                            android:id="@+id/tv_print_paper_orientation"
                             android:textColor="@color/colorPrimaryDark"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="20dp"/>
@@ -123,6 +123,7 @@
                             android:layout_height="wrap_content"
                             android:text="Coloured"
                             android:textSize="16dp"
+                            android:id="@+id/tv_print_paper_print_color"
                             android:textColor="@color/colorPrimaryDark"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="20dp"/>
@@ -149,8 +150,9 @@
                             android:layout_height="wrap_content"
                             android:text="A4 Size paper"
                             android:textSize="16dp"
+                            android:id="@+id/tv_print_paper_size"
                             android:textColor="@color/colorPrimaryDark"
-                            android:layout_marginTop="12dp"/>
+                            android:layout_marginTop="3dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -158,15 +160,16 @@
                             android:text="Print Side"
                             android:textSize="12dp"
                             android:textColor="@color/grey"
-                            android:layout_marginTop="3dp"/>
+                            android:layout_marginTop="12dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/Double_side"
+                            android:id="@+id/tv_print_paper_print_side"
                             android:textSize="16dp"
                             android:textColor="@color/colorPrimaryDark"
-                            android:layout_marginTop="12dp"/>
+                            android:layout_marginTop="3dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
@@ -174,15 +177,16 @@
                             android:text="Paper Color"
                             android:textSize="12dp"
                             android:textColor="@color/grey"
-                            android:layout_marginTop="3dp"/>
+                            android:layout_marginTop="12dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Green"
                             android:textSize="16dp"
+                            android:id="@+id/tv_print_paper_paper_color"
                             android:textColor="@color/colorPrimaryDark"
-                            android:layout_marginTop="12dp"/>
+                            android:layout_marginTop="3dp"/>
 
                     </LinearLayout>
 
@@ -196,6 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="7dp"
+                android:id="@+id/swipe_print_paper"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="7dp"
                 android:background="@color/green"

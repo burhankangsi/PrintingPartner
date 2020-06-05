@@ -7,9 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lawnics.printingpartner.Adapters.DetailsActivityAdapter;
 import com.lawnics.printingpartner.Adapters.PrintPaperAdapter;
+import com.lawnics.printingpartner.Adapters.SectionsPagerAdapter;
 import com.lawnics.printingpartner.Model.DetailActivityModel;
+import com.lawnics.printingpartner.Model.PaperProductModel;
 import com.lawnics.printingpartner.Model.Print_Paper_Model;
 
 import java.util.ArrayList;
@@ -35,7 +40,7 @@ public class Print_Paper extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    private RecyclerView print_paper_rv;
+    private ViewPager2 print_paper_vp;
     DatabaseReference databaseReference;
     PrintPaperAdapter printPaperAdapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -46,6 +51,7 @@ public class Print_Paper extends AppCompatActivity {
     private SwipeRefreshLayout swipe;
 
     List<Print_Paper_Model> printPaperModelList;
+    List<String> urls = new ArrayList<>();
 
 
     @Override
@@ -57,44 +63,33 @@ public class Print_Paper extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         printPaperModelList = new ArrayList<>();
-        print_paper_rv = (RecyclerView) findViewById(R.id.rv_details_activity);
+        print_paper_vp = (ViewPager2) findViewById(R.id.viewpager_print_paper);
 
         name = (TextView) findViewById(R.id.tv_header_print_paper_activity);
-        copies = (TextView) findViewById(R.id.tv_credits_per_page_val_detail_act);
-        paper_size = (TextView) findViewById(R.id.tv_total_ant_val_detail_act);
+        copies = (TextView) findViewById(R.id.tv_print_paper_copies);
+        paper_size = (TextView) findViewById(R.id.tv_print_paper_size);
 
-        orientation = (TextView) findViewById(R.id.tv_total_ant_val_detail_act);
-        print_side = (TextView) findViewById(R.id.tv_total_ant_val_detail_act);
-        print_color = (TextView) findViewById(R.id.tv_total_ant_val_detail_act);
-        paper_color = (TextView) findViewById(R.id.tv_total_ant_val_detail_act);
+        orientation = (TextView) findViewById(R.id.tv_print_paper_orientation);
+        print_side = (TextView) findViewById(R.id.tv_print_paper_print_side);
+        print_color = (TextView) findViewById(R.id.tv_print_paper_print_color);
+        paper_color = (TextView) findViewById(R.id.tv_print_paper_paper_color);
 
-        swipe = (SwipeRefreshLayout) findViewById(R.id.btn_accept_details);
+        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_print_paper);
      //   decline_detail = (AppCompatButton) findViewById(R.id.btn_decline_details);
 
 
         printPaperAdapter = new PrintPaperAdapter(Print_Paper.this, printPaperModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Print_Paper.this);
 
-        print_paper_rv.setLayoutManager(layoutManager);
-        print_paper_rv.setAdapter(printPaperAdapter);
+        List<String> images = getIntent().getStringArrayListExtra("images");
+        for (String path : images){
+            System.out.println(path);
+            printPaperModelList.add(new Print_Paper_Model(path));
+        }
+    //    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Print_Paper.this);
+//
+       // print_paper_vp.setLayoutManager(layoutManager);
+        print_paper_vp.setAdapter(printPaperAdapter);
 
-//        accept_detail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(Print_Paper.this, ManagementActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        decline_detail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Print_Paper.this, ManagementActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
@@ -113,43 +108,50 @@ public class Print_Paper extends AppCompatActivity {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
 
-                                    DetailActivityModel recentOrdModel = new DetailActivityModel(customer_name[0]);
+                                    Print_Paper_Model recentOrdModel = new Print_Paper_Model(customer_name[0]);
                                     for (DataSnapshot date : customerID.getChildren()) {
                                         for (DataSnapshot time : date.getChildren()) {
-                                            recentOrdModel.setTime(time.getKey());
+                                           // recentOrdModel.setTime(time.getKey());
                                             for (DataSnapshot fileName : time.getChildren()) {
 
                                                 for (DataSnapshot attributes : fileName.getChildren()) {
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setCredits(attributes.getValue().toString());
+                                                    if (attributes.getKey().equals("file")) {
+                                                      //  recentOrdModel.setCredits(attributes.getValue().toString());
+                                                        String url = attributes.getValue().toString();
+                                                        urls.add(url);
+                                                        new LoadImagesTask();
                                                     }
+                                                    // Copies
                                                     if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setPaper_size(attributes.getValue().toString());
+                                                        copies.setText(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                                    // Size
+                                                    if (attributes.getKey().equals("gsm")) {
+                                                        paper_size.setText(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setGSM(attributes.getValue().toString());
+                                                    // Print Side
+                                                    if (attributes.getKey().equals("status")) {
+                                                        print_side.setText(attributes.getValue().toString());
                                                     }
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setDoc_image(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setNo_of_docs(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
+
+                                                    if (attributes.getKey().equals("paper_color")) {
+                                                        paper_color.setText(attributes.getValue().toString());
                                                     }
                                                     if (attributes.getKey().equals("paper_color")) {
-                                                        recentOrdModel.setPaper_color(attributes.getValue().toString());
+                                                        print_color.setText(attributes.getValue().toString());
                                                     }
+
+                                                    if (attributes.getKey().equals("image")) {
+                                                        recentOrdModel.setImages(attributes.getValue().toString());
+                                                    }
+
+                                                    //Orientation
                                                     if (attributes.getKey().equals("status")) {
-                                                        recentOrdModel.setOrientation(attributes.getValue().toString());
+                                                        orientation.setText(attributes.getValue().toString());
                                                     }
 
                                                 }
-                                               // printPaperModelList.add(recentOrdModel);
+                                                printPaperModelList.add(recentOrdModel);
                                             }
                                             printPaperAdapter.notifyItemInserted(printPaperModelList.size() - 1);
                                         }
@@ -173,5 +175,21 @@ public class Print_Paper extends AppCompatActivity {
 
 
         });
+    }
+
+    public class LoadImagesTask extends AsyncTask<Void,Void,Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            printPaperAdapter.notifyDataSetChanged();
+        }
     }
 }

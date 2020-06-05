@@ -74,7 +74,7 @@ public class OrderActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_prev_orders, R.id.nav_recent_orders)
+                R.id.nav_wallet, R.id.nav_my_orders, R.id.nav_management, R.id.nav_settings)
                 .setDrawerLayout(drawer)
                 .build();
 
