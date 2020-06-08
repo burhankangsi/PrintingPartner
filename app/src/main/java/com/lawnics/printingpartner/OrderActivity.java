@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -77,7 +78,6 @@ public class OrderActivity extends AppCompatActivity {
                 R.id.nav_wallet, R.id.nav_my_orders, R.id.nav_management, R.id.nav_settings)
                 .setDrawerLayout(drawer)
                 .build();
-
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
        // NavigationView navView = findViewById(R.id.nav_view);
         //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -86,7 +86,20 @@ public class OrderActivity extends AppCompatActivity {
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                int id = item.getItemId();
+                if(id==R.id.nav_management){
+                    startActivity(new Intent(OrderActivity.this,ManagementActivity.class));
+                }
+                //NavigationUI.onNavDestinationSelected(item,navController);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+
+        });
 //        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
       //  NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -97,6 +110,7 @@ public class OrderActivity extends AppCompatActivity {
         setupViewPager(viewPager);
 
         tabLayout.setupWithViewPager(viewPager);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
    }
 
