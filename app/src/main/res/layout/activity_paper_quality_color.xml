@@ -46,7 +46,7 @@
             android:textStyle="bold"
             android:gravity="start"
             android:textSize="16dp"
-            android:paddingTop="15dp"
+            android:paddingTop="16dp"
             android:paddingLeft="5dp"/>
 
 

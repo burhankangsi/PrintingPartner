@@ -9,8 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_management"
@@ -37,17 +36,17 @@
             />
 
         <TextView
+            android:id="@+id/tv_header_management"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:text="Management"
-            android:textColor="@color/white"
-            android:id="@+id/tv_header_management"
-            android:textStyle="bold"
             android:gravity="start"
+            android:paddingStart="5dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/title_management_activity"
+            android:textColor="@color/white"
             android:textSize="16dp"
-            android:paddingTop="15dp"
-            android:paddingLeft="5dp"/>
+            android:textStyle="bold" />
 
 
 

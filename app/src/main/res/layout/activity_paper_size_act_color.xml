@@ -47,8 +47,8 @@
             android:textStyle="bold"
             android:gravity="left"
             android:textSize="16dp"
-            android:paddingTop="15dp"
-            android:layout_marginLeft="5dp"/>
+            android:paddingTop="16dp"
+            android:layout_marginStart="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,15 +59,17 @@
             android:id="@+id/tv_header2_paper_size_activity_color"
             android:textStyle="bold"
             android:textSize="16dp"
-            android:paddingTop="15dp"
-            android:layout_marginLeft="140dp"/>
+            android:paddingTop="16dp"
+            android:layout_marginLeft="160dp"/>
 
         <CheckBox
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/chk_box_paper_size_col"
-            android:layout_marginRight="5dp"
-            android:background="@color/grey"/>
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:buttonTint="@color/white" />
 
 
 

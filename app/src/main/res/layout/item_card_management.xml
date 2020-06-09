@@ -38,7 +38,7 @@
             android:clickable="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:paddingTop="5dp"
+            android:paddingTop="@dimen/ccp_padding"
             android:textSize="16sp"
             android:paddingLeft="5dp"
             android:layout_weight="5"
