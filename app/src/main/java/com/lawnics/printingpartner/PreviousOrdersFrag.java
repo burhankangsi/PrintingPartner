@@ -72,7 +72,7 @@ public class PreviousOrdersFrag extends Fragment {
         prev_ord_rv.setLayoutManager(layoutManager);
         prev_ord_rv.setAdapter(prevOrdFragAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
        // databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

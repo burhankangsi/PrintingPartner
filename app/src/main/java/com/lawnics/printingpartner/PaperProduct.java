@@ -135,7 +135,7 @@ public class PaperProduct extends AppCompatActivity {
 //            }
 //        });
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -151,42 +151,50 @@ public class PaperProduct extends AppCompatActivity {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
                                     cust_name.setText(customer_name[0]);
-                                    PaperProductModel recentOrdModel = new PaperProductModel(customer_name[0]);
-                                    for (DataSnapshot date : customerID.getChildren()) {
-                                        for (DataSnapshot time : date.getChildren()) {
-                                            //   recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()) {
+                                }
+                            }
+                        }
 
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
-                                                    if (attributes.getKey().equals("file")) {
-                                         //               recentOrdModel.setImages(attributes.getValue().toString());
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+
+
+                    });
+                    PaperProductModel recentOrdModel = new PaperProductModel(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            //   recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+
+                                for (DataSnapshot attributes : fileName.getChildren()) {
+                                    if (attributes.getKey().equals("file")) {
+                                        //               recentOrdModel.setImages(attributes.getValue().toString());
 //                                                        recentOrdModel = attributes.getValue(PaperProductModel.class);
 //                                                        paperProductModelList.add(recentOrdModel);
 
-                                                      //  String filename = attributes.getKey();
-                                                        String url = attributes.getValue().toString();
-                                                        urls.add(url);
-                                                        new LoadImagesTask();
-                                                    }
-                                                    if (attributes.getKey().equals("pages")) {
-                                                        //recentOrdModel.setPaper_size(attributes.getValue().toString());
-                                                        no_of_pages.setText(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setImages(attributes.getValue().toString());
-                                                        //no_of_pages.setText(attributes.getValue().toString());
-                                                    }
-//
-                                                }
-                                                paperProductModelList.add(recentOrdModel);
-                                            }
-                                            paperProductAdapter.notifyItemInserted(paperProductModelList.size() - 1);
-                                        }
+                                        //  String filename = attributes.getKey();
+                                        String url = attributes.getValue().toString();
+                                        urls.add(url);
+                                        new LoadImagesTask();
                                     }
+                                    if (attributes.getKey().equals("pages")) {
+                                        //recentOrdModel.setPaper_size(attributes.getValue().toString());
+                                        no_of_pages.setText(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setImages(attributes.getValue().toString());
+                                        //no_of_pages.setText(attributes.getValue().toString());
+                                    }
+//
                                 }
-
+                                paperProductModelList.add(recentOrdModel);
                             }
                         }
+                    }
+                }
+                                            paperProductAdapter.notifyItemInserted(paperProductModelList.size() - 1);
+            }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -195,15 +203,7 @@ public class PaperProduct extends AppCompatActivity {
                     });
                 }
 
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-
-
-        });
-    }
 
     public class LoadImagesTask extends AsyncTask<Void,Void,Void>{
 

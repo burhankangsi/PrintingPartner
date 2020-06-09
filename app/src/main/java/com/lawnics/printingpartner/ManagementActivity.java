@@ -72,7 +72,7 @@ public class ManagementActivity extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(ManagementActivity.this, DetailsActivity.class);
+                Intent intent  = new Intent(ManagementActivity.this, OrderActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -88,7 +88,7 @@ public class ManagementActivity extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -104,13 +104,24 @@ public class ManagementActivity extends AppCompatActivity {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
 
-                                    ManagementModel recentOrdModel = new ManagementModel(customer_name[0]);
-                                    for (DataSnapshot date : customerID.getChildren()) {
-                                        for (DataSnapshot time : date.getChildren()) {
-                                        //    recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()) {
+                                }
+                            }
+                        }
 
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+
+
+                    });
+
+                    ManagementModel recentOrdModel = new ManagementModel(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            //    recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+
+                                for (DataSnapshot attributes : fileName.getChildren()) {
 //                                                    if (attributes.getKey().equals("credits")) {
 //                                                        recentOrdModel.setCredits(attributes.getValue().toString());
 //                                                    }
@@ -120,29 +131,28 @@ public class ManagementActivity extends AppCompatActivity {
 //                                                    if (attributes.getKey().equals("gsm")) {
 //                                                        recentOrdModel.setGSM(attributes.getValue().toString());
 //                                                    }
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setDoc_img(attributes.getValue().toString());
-                                                    }
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setDoc_img(attributes.getValue().toString());
+                                    }
 //                                                    if (attributes.getKey().equals("pages")) {
 //                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
 //                                                    }
-                                                    if (attributes.getKey().equals("paper_color")) {
-                                                        recentOrdModel.setPaper_type(attributes.getValue().toString());
-                                                    }
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        recentOrdModel.setPaper_type(attributes.getValue().toString());
+                                    }
 //                                                    if (attributes.getKey().equals("status")) {
 //                                                        recentOrdModel.setOrientation(attributes.getValue().toString());
 //                                                    }
 
-                                                }
-                                                managementModelList.add(recentOrdModel);
-                                            }
-                                            management_adapter.notifyItemInserted(managementModelList.size() - 1);
-                                        }
-                                    }
                                 }
-
+                                managementModelList.add(recentOrdModel);
                             }
                         }
+                    }
+                }
+                                            management_adapter.notifyItemInserted(managementModelList.size() - 1);
+                                        }
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -152,11 +162,4 @@ public class ManagementActivity extends AppCompatActivity {
                 }
 
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
 
-
-        });
-    }
-}

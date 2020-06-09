@@ -69,73 +69,80 @@ public class RecentOrdersFrag extends Fragment {
 
         recent_ord_rv.setLayoutManager(layoutManager);
         recent_ord_rv.setAdapter(recentOrdFragAdapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
       //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot customerID : dataSnapshot.getChildren()){
+                for (DataSnapshot customerID : dataSnapshot.getChildren()) {
 
                     final String[] customer_name = {""};
-                    DatabaseReference dr = FirebaseDatabase.getInstance().getReference("Users/"+customerID.getKey());
+                    DatabaseReference dr = FirebaseDatabase.getInstance().getReference("Users/" + customerID.getKey());
                     dr.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot name : dataSnapshot.getChildren()){
+                            for (DataSnapshot name : dataSnapshot.getChildren()) {
                                 customer_name[0] = "";
-                                if (name.getKey().equals("first_name"))
-                                {
-                                    Log.i("cus",name.getValue().toString());
-                                    customer_name[0] +=name.getValue().toString();
-                                    RecentOrdModel recentOrdModel = new RecentOrdModel(customer_name[0]);
-                                    for(DataSnapshot date : customerID.getChildren()){
-                                        for (DataSnapshot time :date.getChildren()){
-                                            recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()){
-                                                recentOrdModel.setFilename(fileName.getKey());
-                                                //   RecentOrdModel recentOrdModel = new RecentOrdModel(fileName.getKey());
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
-                                                    if (attributes.getKey().equals("credits")){
-                                                        recentOrdModel.setItemPrice(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")){
-                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
-                                                    }
+                                if (name.getKey().equals("first_name")) {
+                                    Log.i("cus", name.getValue().toString());
+                                    customer_name[0] += name.getValue().toString();
 
-                                                    if (attributes.getKey().equals("paper_color")){
-                                                        recentOrdModel.setFileName(attributes.getValue().toString());
-                                                    }
-                                                    // This one ok
-                                                    if (attributes.getKey().equals("gsm")){
-                                                        recentOrdModel.setLocation(attributes.getValue().toString());
-                                                    }
-
-                                                    if (attributes.getKey().equals("image")){
-                                                        recentOrdModel.setCust_image(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("pages")){
-                                                        recentOrdModel.setNo_pages(attributes.getValue().toString());
-                                                    }
-
-                                                    if (attributes.getKey().equals("paper_color")){
-                                                        recentOrdModel.setNo_docs(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")){
-                                                        recentOrdModel.setStatus_time(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("file")){
-                                                        recentOrdModel.setFile_path(attributes.getValue().toString());
-                                                    }
-                                                }
-                                                recentOrdModelList.add(recentOrdModel);
-                                            }
-                                            recentOrdFragAdapter.notifyItemInserted(recentOrdModelList.size()-1);
-                                        }
-                                    }
                                 }
                             }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
+                    });
+                    RecentOrdModel recentOrdModel = new RecentOrdModel(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+                                recentOrdModel.setFilename(fileName.getKey());
+                                //   RecentOrdModel recentOrdModel = new RecentOrdModel(fileName.getKey());
+                                for (DataSnapshot attributes : fileName.getChildren()) {
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setItemPrice(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        recentOrdModel.setFileName(attributes.getValue().toString());
+                                    }
+                                    // This one ok
+                                    if (attributes.getKey().equals("gsm")) {
+                                        recentOrdModel.setLocation(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setCust_image(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("pages")) {
+                                        recentOrdModel.setNo_pages(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        recentOrdModel.setNo_docs(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setStatus_time(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("file")) {
+                                        recentOrdModel.setFile_path(attributes.getValue().toString());
+                                    }
+                                }
+                                recentOrdModelList.add(recentOrdModel);
+                            }
+                        }
+                    }
+                }
+                                recentOrdFragAdapter.notifyItemInserted(recentOrdModelList.size()-1);
+            }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -145,13 +152,8 @@ public class RecentOrdersFrag extends Fragment {
                 }
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
-    }
-}
+
+

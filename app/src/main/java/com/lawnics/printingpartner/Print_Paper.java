@@ -92,7 +92,7 @@ public class Print_Paper extends AppCompatActivity {
 
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,59 +107,68 @@ public class Print_Paper extends AppCompatActivity {
                                 if (name.getKey().equals("first_name")) {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
-
-                                    Print_Paper_Model recentOrdModel = new Print_Paper_Model(customer_name[0]);
-                                    for (DataSnapshot date : customerID.getChildren()) {
-                                        for (DataSnapshot time : date.getChildren()) {
-                                           // recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()) {
-
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
-                                                    if (attributes.getKey().equals("file")) {
-                                                      //  recentOrdModel.setCredits(attributes.getValue().toString());
-                                                        String url = attributes.getValue().toString();
-                                                        urls.add(url);
-                                                        new LoadImagesTask();
-                                                    }
-                                                    // Copies
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        copies.setText(attributes.getValue().toString());
-                                                    }
-                                                    // Size
-                                                    if (attributes.getKey().equals("gsm")) {
-                                                        paper_size.setText(attributes.getValue().toString());
-                                                    }
-                                                    // Print Side
-                                                    if (attributes.getKey().equals("status")) {
-                                                        print_side.setText(attributes.getValue().toString());
-                                                    }
-
-                                                    if (attributes.getKey().equals("paper_color")) {
-                                                        paper_color.setText(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("paper_color")) {
-                                                        print_color.setText(attributes.getValue().toString());
-                                                    }
-
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setImages(attributes.getValue().toString());
-                                                    }
-
-                                                    //Orientation
-                                                    if (attributes.getKey().equals("status")) {
-                                                        orientation.setText(attributes.getValue().toString());
-                                                    }
-
-                                                }
-                                                printPaperModelList.add(recentOrdModel);
-                                            }
-                                            printPaperAdapter.notifyItemInserted(printPaperModelList.size() - 1);
-                                        }
-                                    }
                                 }
-
                             }
                         }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+
+
+                    });
+
+                    Print_Paper_Model recentOrdModel = new Print_Paper_Model(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            // recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+
+                                for (DataSnapshot attributes : fileName.getChildren()) {
+                                    if (attributes.getKey().equals("file")) {
+                                        //  recentOrdModel.setCredits(attributes.getValue().toString());
+                                        String url = attributes.getValue().toString();
+                                        urls.add(url);
+                                        new LoadImagesTask();
+                                    }
+                                    // Copies
+                                    if (attributes.getKey().equals("credits")) {
+                                        copies.setText(attributes.getValue().toString());
+                                    }
+                                    // Size
+                                    if (attributes.getKey().equals("gsm")) {
+                                        paper_size.setText(attributes.getValue().toString());
+                                    }
+                                    // Print Side
+                                    if (attributes.getKey().equals("status")) {
+                                        print_side.setText(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        paper_color.setText(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        print_color.setText(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setImages(attributes.getValue().toString());
+                                    }
+
+                                    //Orientation
+                                    if (attributes.getKey().equals("status")) {
+                                        orientation.setText(attributes.getValue().toString());
+                                    }
+
+                                }
+                                printPaperModelList.add(recentOrdModel);
+                            }
+                        }
+                    }
+                }
+                                            printPaperAdapter.notifyItemInserted(printPaperModelList.size() - 1);
+                                        }
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -168,14 +177,6 @@ public class Print_Paper extends AppCompatActivity {
                     });
                 }
 
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-
-
-        });
-    }
 
     public class LoadImagesTask extends AsyncTask<Void,Void,Void> {
 

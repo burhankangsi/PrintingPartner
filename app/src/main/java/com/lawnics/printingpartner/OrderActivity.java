@@ -87,6 +87,21 @@ public class OrderActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                if(id==R.id.nav_management){
+                    startActivity(new Intent(OrderActivity.this,ManagementActivity.class));
+                }
+                //NavigationUI.onNavDestinationSelected(item,navController);
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+
+        });
+
 //        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
       //  NavigationUI.setupWithNavController(navigationView, navController);
 

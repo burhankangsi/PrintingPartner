@@ -92,7 +92,7 @@ public class PaperQualityActivity_color extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -107,46 +107,55 @@ public class PaperQualityActivity_color extends AppCompatActivity {
                                 if (name.getKey().equals("first_name")) {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
+                                }
+                            }
+                        }
 
-                                    PaperQual_col_Model recentOrdModel = new PaperQual_col_Model(customer_name[0]);
-                                    for (DataSnapshot date : customerID.getChildren()) {
-                                        for (DataSnapshot time : date.getChildren()) {
-                                       //     recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
 
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
+
+                    });
+
+                    PaperQual_col_Model recentOrdModel = new PaperQual_col_Model(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            //     recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+
+                                for (DataSnapshot attributes : fileName.getChildren()) {
 //                                                    if (attributes.getKey().equals("credits")) {
 //                                                        recentOrdModel.setCredits(attributes.getValue().toString());
 //                                                    }
 //                                                    if (attributes.getKey().equals("file")) {
 //                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
 //                                                    }
-                                                    if (attributes.getKey().equals("gsm")) {
-                                                        recentOrdModel.setGsm(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setDoc_img(attributes.getValue().toString());
-                                                    }
+                                    if (attributes.getKey().equals("gsm")) {
+                                        recentOrdModel.setGsm(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setDoc_img(attributes.getValue().toString());
+                                    }
 //                                                    if (attributes.getKey().equals("pages")) {
 //                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
 //                                                    }
-                                                    if (attributes.getKey().equals("paper_color")) {
-                                                        recentOrdModel.setDescription(attributes.getValue().toString());
-                                                    }
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        recentOrdModel.setDescription(attributes.getValue().toString());
+                                    }
 //                                                    if (attributes.getKey().equals("status")) {
 //                                                        recentOrdModel.setOrientation(attributes.getValue().toString());
 //                                                    }
 
-                                                }
-                                                paperQualColModelList.add(recentOrdModel);
-                                            }
-                                            paper_quality_col_adapter.notifyItemInserted(paperQualColModelList.size() - 1);
-                                        }
-                                    }
                                 }
-
+                                paperQualColModelList.add(recentOrdModel);
                             }
                         }
+                    }
+                }
+                                            paper_quality_col_adapter.notifyItemInserted(paperQualColModelList.size() - 1);
+                                        }
+
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -155,12 +164,5 @@ public class PaperQualityActivity_color extends AppCompatActivity {
                     });
                 }
 
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
 
-
-        });
-    }
 }

@@ -112,7 +112,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
       //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,56 +127,7 @@ public class DetailsActivity extends AppCompatActivity {
                                 if (name.getKey().equals("first_name")) {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue();
-
-                                    DetailActivityModel recentOrdModel = new DetailActivityModel(customer_name[0]);
-                                    for (DataSnapshot date : customerID.getChildren()) {
-                                        for (DataSnapshot time : date.getChildren()) {
-                                            recentOrdModel.setTime(time.getKey());
-                                            for (DataSnapshot fileName : time.getChildren()) {
-                                                filename = fileName.getKey();
-                                                recentOrdModel.setFileName(fileName.getKey());
-                                                for (DataSnapshot attributes : fileName.getChildren()) {
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setCredits(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setPaper_size(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setGSM(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("image")) {
-                                                        recentOrdModel.setDoc_image(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setNo_of_docs(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("credits")) {
-                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("paper_color")) {
-                                                        recentOrdModel.setPaper_color(attributes.getValue().toString());
-                                                    }
-                                                    if (attributes.getKey().equals("status")) {
-                                                        recentOrdModel.setOrientation(attributes.getValue().toString());
-                                                    }
-
-                                                    if (attributes.getKey().equals("file")) {
-                                                        filepath = (attributes.getValue().toString());
-                                                        recentOrdModel.setFilePath(attributes.getValue().toString());
-                                                    }
-
-                                                }
-                                                detailActivityModelList.add(recentOrdModel);
-                                            }
-                                            detailsActivityAdapter.notifyItemInserted(detailActivityModelList.size() - 1);
-                                        }
-                                    }
                                 }
-
                             }
                         }
 
@@ -185,16 +136,65 @@ public class DetailsActivity extends AppCompatActivity {
 
                         }
                     });
+
+                    DetailActivityModel recentOrdModel = new DetailActivityModel(customer_name[0]);
+                    for (DataSnapshot date : customerID.getChildren()) {
+                        for (DataSnapshot time : date.getChildren()) {
+                            recentOrdModel.setTime(time.getKey());
+                            for (DataSnapshot fileName : time.getChildren()) {
+                                filename = fileName.getKey();
+                                recentOrdModel.setFileName(fileName.getKey());
+                                for (DataSnapshot attributes : fileName.getChildren()) {
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setCredits(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setPaper_size(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setOrd_no(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setGSM(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("image")) {
+                                        recentOrdModel.setDoc_image(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setNo_of_docs(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("credits")) {
+                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("paper_color")) {
+                                        recentOrdModel.setPaper_color(attributes.getValue().toString());
+                                    }
+                                    if (attributes.getKey().equals("status")) {
+                                        recentOrdModel.setOrientation(attributes.getValue().toString());
+                                    }
+
+                                    if (attributes.getKey().equals("file")) {
+                                        filepath = (attributes.getValue().toString());
+                                        recentOrdModel.setFilePath(attributes.getValue().toString());
+                                    }
+
+                                }
+                                detailActivityModelList.add(recentOrdModel);
+                            }
+                        }
+                    }
                 }
-
+                                detailsActivityAdapter.notifyItemInserted(detailActivityModelList.size() - 1);
             }
-    @Override
-    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+
+
+                        });
+
     }
-
-
-});
-         }
 
     class RetrievePDFStream extends AsyncTask<String, Void, List<String>>
     {
