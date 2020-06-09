@@ -78,9 +78,9 @@ public class OrderActivity extends AppCompatActivity {
                 .setDrawerLayout(drawer)
                 .build();
 
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationView navView = findViewById(R.id.nav_view);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+       // NavigationView navView = findViewById(R.id.nav_view);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -111,7 +111,7 @@ public class OrderActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         //fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
         //  android.R.anim.fade_out);
-        fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
+                 // fragmentTransaction.replace(R.id.nav_host_fragment,fragment);
         //fragmentTransaction.addToBackStack(null);
 
         fragmentTransaction.commit();

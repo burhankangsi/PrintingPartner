@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,14 +63,12 @@ public class RecentOrdersFrag extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recentOrdModelList = new ArrayList<>();
-        recent_ord_rv = view.findViewById(R.id.recentOrderrv);
-
+        recent_ord_rv = (RecyclerView) view.findViewById(R.id.recentOrderrv);
         recentOrdFragAdapter = new RecentOrdFragAdapter(getContext(),recentOrdModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
         recent_ord_rv.setLayoutManager(layoutManager);
         recent_ord_rv.setAdapter(recentOrdFragAdapter);
-
         databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
       //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -135,6 +134,7 @@ public class RecentOrdersFrag extends Fragment {
                                     }
                                 }
                             }
+
                         }
 
                         @Override
@@ -150,6 +150,8 @@ public class RecentOrdersFrag extends Fragment {
 
             }
         });
+
+
 
     }
 }
