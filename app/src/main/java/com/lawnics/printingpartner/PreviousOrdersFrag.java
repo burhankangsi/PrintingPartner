@@ -73,7 +73,7 @@ public class PreviousOrdersFrag extends Fragment {
         prev_ord_rv.setAdapter(prevOrdFragAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/abcdef/Orders");
-        databaseReference.child("abcd").setValue("1234");
+       // databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
