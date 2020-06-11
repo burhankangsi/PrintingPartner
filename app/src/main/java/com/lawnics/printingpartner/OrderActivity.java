@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +44,7 @@ public class OrderActivity extends AppCompatActivity {
     private ImageView imgView;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class OrderActivity extends AppCompatActivity {
         tv_nav_header = (TextView) navHeader.findViewById(R.id.txt_nav_header);
        // btn_prevOrd = (AppCompatButton)findViewById(R.id.pre)
         imgView = (ImageView) navHeader.findViewById(R.id.imageView_nav_header);
+
 
         Glide.with(this).load(R.drawable.lawnics)
                 .apply(RequestOptions.circleCropTransform())

@@ -47,6 +47,7 @@
         android:text="Estimation"
         android:textSize="17dp"
         android:layout_marginLeft="20dp"
+        android:layout_gravity="bottom"
         android:textColor="@color/colorPrimaryDark"/>
 
     <LinearLayout
@@ -145,6 +146,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:layout_gravity="bottom"
         android:layout_marginTop="8dp"
         android:weightSum="2">
 

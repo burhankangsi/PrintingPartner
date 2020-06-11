@@ -89,6 +89,8 @@
         android:id="@+id/btn_submit_paper_size_wh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="2dp"
         android:layout_margin="15dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimaryDark"

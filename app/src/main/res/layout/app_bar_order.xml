@@ -11,6 +11,13 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="5">-->
+
+
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -18,7 +25,16 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+
              />
+
+<!--        <androidx.appcompat.widget.SearchView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/search_view_order"-->
+<!--            android:layout_weight="1"/>-->
+<!--        </LinearLayout>-->
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
