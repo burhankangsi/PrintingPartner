@@ -11,6 +11,16 @@ public class RecentOrdModel {
     String no_docs;
     String file_path;
     String filename;
+    String date_recent;
+
+
+    public String getDate_recent() {
+        return date_recent;
+    }
+
+    public void setDate_recent(String date_recent) {
+        this.date_recent = date_recent;
+    }
 
     public String getFilename() {
         return filename;

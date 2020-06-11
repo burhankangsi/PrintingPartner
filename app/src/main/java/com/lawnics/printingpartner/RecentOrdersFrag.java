@@ -86,7 +86,6 @@ public class RecentOrdersFrag extends Fragment {
                                 if (name.getKey().equals("first_name")) {
                                     Log.i("cus", name.getValue().toString());
                                     customer_name[0] += name.getValue().toString();
-
                                 }
                             }
                         }
@@ -98,6 +97,7 @@ public class RecentOrdersFrag extends Fragment {
                     });
                     RecentOrdModel recentOrdModel = new RecentOrdModel(customer_name[0]);
                     for (DataSnapshot date : customerID.getChildren()) {
+                        recentOrdModel.setDate_recent(date.getKey());
                         for (DataSnapshot time : date.getChildren()) {
                             recentOrdModel.setTime(time.getKey());
                             for (DataSnapshot fileName : time.getChildren()) {

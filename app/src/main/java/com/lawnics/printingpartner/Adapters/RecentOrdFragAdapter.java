@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,7 +50,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAdapter.ViewHolder> {
+public class RecentOrdFragAdapter extends RecyclerView.Adapter{
 
     private Context mContext;
     private List<RecentOrdModel> itemList;
@@ -59,29 +60,128 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         this.itemList = itemList;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return 0;
+    }
+
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_recent_orders, parent, false);
-        return new ViewHolder(view);
-
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view;
+        view = layoutInflater.inflate(R.layout.item_card_recent_orders, parent, false);
+        return new ViewHolder1(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        int n = itemList.size();
+        RecentOrdModel re1 = itemList.get(position);
+        RecentOrdModel re = itemList.get(position);
+        if(position<=n-2){
+            re1 = itemList.get(position+1);
+        }
+        if(position==0 || !re.getDate_recent().equals(re1.getDate_recent())){
+            ViewHolder1 viewHolder1 = (ViewHolder1) holder;
+            viewHolder1.recent_day.setText(re.getDate_recent());
+            viewHolder1.recent_time.setText(re.getTime());
+            viewHolder1.date_card.setVisibility(View.VISIBLE);
+            RecentOrdModel single_bid_item = itemList.get(position);
+            viewHolder1.cust_name.setText(single_bid_item.getFileName());
+            viewHolder1.order_no.setText(single_bid_item.getOrd_no());
+            viewHolder1.location.setText(single_bid_item.getLocation());
+            viewHolder1.doc_no.setText(single_bid_item.getNo_docs());
+            viewHolder1.pages.setText(single_bid_item.getNo_pages());
+            viewHolder1.price.setText(single_bid_item.getItemPrice());
+            viewHolder1.time.setText(single_bid_item.getTime());
 
+            Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder1.cust_img);
+
+            viewHolder1.details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    mContext.startActivity(intent);
+                }
+            });
+
+            viewHolder1.accept_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+
+                    //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
+                    //mContext.startActivity(intent);
+
+
+                }
+            });
+
+            viewHolder1.decline_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                Intent intent = new Intent(mContext, DetailsActivity.class);
+//                mContext.startActivity(intent);
+                }
+            });
+        }
+        else if(re.getDate_recent().equals(re1.getDate_recent())){
+            ViewHolder1 viewHolder1 = (ViewHolder1) holder;
+            RecentOrdModel single_bid_item = itemList.get(position);
+            viewHolder1.cust_name.setText(single_bid_item.getFileName());
+            viewHolder1.order_no.setText(single_bid_item.getOrd_no());
+            viewHolder1.location.setText(single_bid_item.getLocation());
+            viewHolder1.doc_no.setText(single_bid_item.getNo_docs());
+            viewHolder1.pages.setText(single_bid_item.getNo_pages());
+            viewHolder1.price.setText(single_bid_item.getItemPrice());
+            viewHolder1.time.setText(single_bid_item.getTime());
+
+            Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder1.cust_img);
+
+            viewHolder1.details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext, DetailsActivity.class);
+                    mContext.startActivity(intent);
+                }
+            });
+
+            viewHolder1.accept_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+
+                    //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
+                    //mContext.startActivity(intent);
+
+
+                }
+            });
+
+            viewHolder1.decline_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                Intent intent = new Intent(mContext, DetailsActivity.class);
+//                mContext.startActivity(intent);
+                }
+            });
+        }
+        /*ViewHolder1 viewHolder1 = (ViewHolder1) holder;
         RecentOrdModel single_bid_item = itemList.get(position);
-        holder.cust_name.setText(single_bid_item.getFileName());
-        holder.order_no.setText(single_bid_item.getOrd_no());
-        holder.location.setText(single_bid_item.getLocation());
-        holder.doc_no.setText(single_bid_item.getNo_docs());
-        holder.pages.setText(single_bid_item.getNo_pages());
-        holder.price.setText(single_bid_item.getItemPrice());
-        holder.time.setText(single_bid_item.getTime());
+        viewHolder1.cust_name.setText(single_bid_item.getFileName());
+        viewHolder1.order_no.setText(single_bid_item.getOrd_no());
+        viewHolder1.location.setText(single_bid_item.getLocation());
+        viewHolder1.doc_no.setText(single_bid_item.getNo_docs());
+        viewHolder1.pages.setText(single_bid_item.getNo_pages());
+        viewHolder1.price.setText(single_bid_item.getItemPrice());
+        viewHolder1.time.setText(single_bid_item.getTime());
 
-        Picasso.get().load(single_bid_item.getCust_image()).into(holder.cust_img);
+        Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder1.cust_img);
 
-        holder.details.setOnClickListener(new View.OnClickListener() {
+        viewHolder1.details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, DetailsActivity.class);
@@ -89,7 +189,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
             }
         });
 
-        holder.accept_btn.setOnClickListener(new View.OnClickListener() {
+        viewHolder1.accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -102,13 +202,13 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
             }
         });
 
-        holder.decline_btn.setOnClickListener(new View.OnClickListener() {
+        viewHolder1.decline_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Intent intent = new Intent(mContext, DetailsActivity.class);
 //                mContext.startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -116,13 +216,13 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
         return itemList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder1 extends RecyclerView.ViewHolder {
         public TextView cust_name, order_no, location, doc_no, pages, time, price, details;
         public CircleImageView cust_img;
         public AppCompatButton accept_btn, decline_btn;
-
-
-        public ViewHolder(@NonNull View itemView) {
+        public CardView date_card;
+        public TextView recent_time,recent_day;
+        public ViewHolder1(@NonNull View itemView) {
             super(itemView);
             cust_name = itemView.findViewById(R.id.tv_cust_name_cv_rec_ord);
             order_no = itemView.findViewById(R.id.tv_order_no_cv_rec_ord_val);
@@ -133,11 +233,14 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter <RecentOrdFragAda
             price = itemView.findViewById(R.id.tv_rec_cv_rec_ord_price);
             details = itemView.findViewById(R.id.tv_details_cv_rec_ord);
             cust_img = itemView.findViewById(R.id.circular_img_view_cv_recent_orders);
-
+            date_card = itemView.findViewById(R.id.date_recent_card);
             accept_btn = itemView.findViewById(R.id.btn_cv_rec_orders_btn1);
             decline_btn = itemView.findViewById(R.id.btn_cv_rec_orders_btn2);
-
+            recent_time = itemView.findViewById(R.id.recent_card_time);
+            recent_day = itemView.findViewById(R.id.recent_card_day);
         }
+
+
     }
 
     class RetrievePDFStream extends AsyncTask<String, Void, List<String>>
