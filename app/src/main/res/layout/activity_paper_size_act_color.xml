@@ -76,24 +76,26 @@
 
     </LinearLayout>
 
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_paper_size_activity_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_alignParentTop="true">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_submit_paper_size_col"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="Submit"
-        android:textColor="@color/white" />
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit_paper_size_col"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="Submit"
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
 </LinearLayout>

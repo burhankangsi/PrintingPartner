@@ -51,9 +51,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         Fragment fragment = null;
         if (position == 0) {
-            fragment = new PreviousOrdersFrag();
-        } else if (position == 1) {
             fragment = new RecentOrdersFrag();
+        } else if (position == 1) {
+            fragment = new PreviousOrdersFrag();
         }
         return fragment;
     }
@@ -68,10 +68,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position)
         {
             case 0:
-                return "Previous Orders";
+                return "Recent Orders";
 
             case 1:
-                return "Recent Orders";
+                return "Previous Orders";
         }
         return null;
 

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:id="@+id/card_view_paper_size_color">
 
         <LinearLayout

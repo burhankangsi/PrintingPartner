@@ -138,8 +138,8 @@ public class OrderActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager)
     {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        sectionsPagerAdapter.addFragment(new PreviousOrdersFrag(), "Previous Orders");
         sectionsPagerAdapter.addFragment(new RecentOrdersFrag(), "Recent Orders");
+        sectionsPagerAdapter.addFragment(new PreviousOrdersFrag(), "Previous Orders");
         viewPager.setAdapter(sectionsPagerAdapter);
     }
 

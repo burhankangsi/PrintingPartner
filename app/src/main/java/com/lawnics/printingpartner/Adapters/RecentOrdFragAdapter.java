@@ -50,20 +50,19 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static androidx.camera.core.CameraX.getContext;
+
 public class RecentOrdFragAdapter extends RecyclerView.Adapter{
 
     private Context mContext;
     private List<RecentOrdModel> itemList;
+    int pos=-1;
     public RecentOrdFragAdapter(Context mContext, List<RecentOrdModel> itemList)
     {
         this.mContext = mContext;
         this.itemList = itemList;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
 
     @NonNull
     @Override
@@ -72,11 +71,14 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
         View view;
         view = layoutInflater.inflate(R.layout.item_card_recent_orders, parent, false);
         return new ViewHolder1(view);
+
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         int n = itemList.size();
+        final int[] clickedCard = new int[1];
         RecentOrdModel re1 = itemList.get(position);
         RecentOrdModel re = itemList.get(position);
         if(position<=n-2){
@@ -110,15 +112,48 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View view) {
 
-                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+                    //new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
 
                     //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
                     //mContext.startActivity(intent);
-
+                    pos = position;
 
                 }
             });
+            if(pos==position){
+                LayoutInflater layoutInflater = LayoutInflater.from(mContext);;
+                View view = layoutInflater.inflate(R.layout.item_card_rec_orders_accepted, null, false);
+                ViewHolder2 vi = new ViewHolder2(view);
+                ViewHolder2 viewHolder2 = (ViewHolder2) holder;
+                RecentOrdModel single_bid_item1 = itemList.get(position);
+                viewHolder2.cust_name.setText(single_bid_item1.getFileName());
+                viewHolder2.order_no.setText(single_bid_item1.getOrd_no());
+                viewHolder2.location.setText(single_bid_item1.getLocation());
+                viewHolder2.doc_no.setText(single_bid_item1.getNo_docs());
+                viewHolder2.pages.setText(single_bid_item1.getNo_pages());
+                viewHolder2.price.setText(single_bid_item1.getItemPrice());
+                viewHolder2.time.setText(single_bid_item1.getTime());
 
+                Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder2.cust_img);
+
+                viewHolder2.details.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, DetailsActivity.class);
+                        mContext.startActivity(intent);
+                    }
+                });
+
+                viewHolder2.complete_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, DetailsActivity.class);
+                        mContext.startActivity(intent);
+
+
+                    }
+                });
+            }
             viewHolder1.decline_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -152,14 +187,54 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View view) {
 
-                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+                    //new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
 
                     //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
                     //mContext.startActivity(intent);
+                    //new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
 
+                    //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
+                    //mContext.startActivity(intent);
+                    pos = position;
 
                 }
+
             });
+            if(pos==position){
+                LayoutInflater layoutInflater = LayoutInflater.from(mContext);;
+                View view = layoutInflater.inflate(R.layout.item_card_rec_orders_accepted, null, false);
+                ViewHolder2 vi = new ViewHolder2(view);
+                ViewHolder2 viewHolder2 = (ViewHolder2) holder;
+                RecentOrdModel single_bid_item1 = itemList.get(position);
+                viewHolder2.cust_name.setText(single_bid_item1.getFileName());
+                viewHolder2.order_no.setText(single_bid_item1.getOrd_no());
+                viewHolder2.location.setText(single_bid_item1.getLocation());
+                viewHolder2.doc_no.setText(single_bid_item1.getNo_docs());
+                viewHolder2.pages.setText(single_bid_item1.getNo_pages());
+                viewHolder2.price.setText(single_bid_item1.getItemPrice());
+                viewHolder2.time.setText(single_bid_item1.getTime());
+
+                Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder2.cust_img);
+
+                viewHolder2.details.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, DetailsActivity.class);
+                        mContext.startActivity(intent);
+                    }
+                });
+
+                viewHolder2.complete_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, DetailsActivity.class);
+                        mContext.startActivity(intent);
+
+
+                    }
+                });
+            }
+
 
             viewHolder1.decline_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -240,8 +315,31 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
             recent_day = itemView.findViewById(R.id.recent_card_day);
         }
 
-
     }
+    public class ViewHolder2 extends RecyclerView.ViewHolder {
+        public TextView cust_name, order_no, location, doc_no, pages, time, price, details;
+        public CircleImageView cust_img;
+        public AppCompatButton complete_btn, decline_btn;
+
+
+        public ViewHolder2(@NonNull View itemView) {
+            super(itemView);
+            cust_name = itemView.findViewById(R.id.tv_cust_name_cv_rec_ord_accepted);
+            order_no = itemView.findViewById(R.id.tv_order_no_cv_rec_ord_val_accepted);
+            location = itemView.findViewById(R.id.tv_location_cv_rec_ord_accepted);
+            doc_no = itemView.findViewById(R.id.tv_docs_cv_rec_ord_accepted);
+            pages = itemView.findViewById(R.id.tv_pages_cv_rec_ord_accepted);
+            time = itemView.findViewById(R.id.tv_time_cv_rec_ord_accepted);
+            price = itemView.findViewById(R.id.tv_rec_cv_rec_ord_price_accepted);
+            details = itemView.findViewById(R.id.tv_details_cv_rec_ord_accepted);
+            cust_img = itemView.findViewById(R.id.circular_img_view_cv_recent_orders_accepted);
+
+            complete_btn = itemView.findViewById(R.id.btn_cv_rec_orders_complete);
+            decline_btn = itemView.findViewById(R.id.btn_cv_rec_orders_btn2);
+
+        }
+    }
+
 
     class RetrievePDFStream extends AsyncTask<String, Void, List<String>>
     {

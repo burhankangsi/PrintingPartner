@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:id="@+id/card_view_prev_order">
 
         <LinearLayout
@@ -57,7 +57,7 @@
                     android:layout_height="60dp"
                     android:id="@+id/img_view_cv_details_activity"
                     android:src="@drawable/ic_pagesicon"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_marginLeft="3dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"/>
