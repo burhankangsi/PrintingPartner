@@ -187,7 +187,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View view) {
 
-                    //new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
 
                     //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
                     //mContext.startActivity(intent);

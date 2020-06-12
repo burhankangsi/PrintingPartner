@@ -38,18 +38,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="10">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical"
-            android:id="@+id/viewpager_print_paper"/>
+            android:id="@+id/viewpager_print_paper"
+            android:layout_alignParentTop="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
             android:layout_weight="4">
 
             <LinearLayout
@@ -204,6 +209,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="7dp"
                 android:background="@color/green"
+                android:layout_marginBottom="17dp"
                 android:text="Slide to print"
                 />
 
@@ -212,7 +218,7 @@
         </LinearLayout>
 
 
-
+        </RelativeLayout>
     </LinearLayout>
 
 
