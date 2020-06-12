@@ -32,36 +32,39 @@
         android:textSize="16dp"
         android:paddingTop="5dp"
         android:paddingLeft="10dp"/>
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_details_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_alignParentTop="true">
     </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_estimation_details_act"
-        android:text="Estimation"
-        android:textSize="17dp"
-        android:layout_marginLeft="20dp"
-        android:layout_gravity="bottom"
-        android:textColor="@color/colorPrimaryDark"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
-        >
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tv_estimation_details_act"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:text="Estimation"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="17dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="3"
+            android:paddingTop="@dimen/margin_medium">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,44 +141,43 @@
                 android:gravity="right"/>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingBottom="@dimen/margin_medium">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_accept_details"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:layout_weight="1"
+                android:background="@color/green"
+                android:text="Accept"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_decline_details"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="14dp"
+                android:layout_weight="1"
+                android:background="@color/red"
+                android:text="Decline"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="8dp"
-        android:weightSum="2">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:id="@+id/btn_accept_details"
-            android:layout_marginLeft="14dp"
-            android:text="Accept"
-            android:background="@color/green"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:id="@+id/btn_decline_details"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="14dp"
-            android:text="Decline"
-            android:background="@color/red"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            />
 
     </LinearLayout>
-
+    </RelativeLayout>
 
 </LinearLayout>
