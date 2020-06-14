@@ -22,7 +22,8 @@
                 android:layout_height="match_parent"
                 android:id="@+id/img_cv_print_paper"
                 android:src="@drawable/ic_pagesicon"
-                android:gravity="center" />
+                android:gravity="center"
+                android:scaleType="fitXY" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

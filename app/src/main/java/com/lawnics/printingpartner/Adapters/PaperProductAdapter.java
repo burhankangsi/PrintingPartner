@@ -25,6 +25,7 @@ public class PaperProductAdapter extends RecyclerView.Adapter<PaperProductAdapte
     {
         this.mContext = mContext;
         this.itemList = itemList;
+
     }
     @NonNull
     @Override

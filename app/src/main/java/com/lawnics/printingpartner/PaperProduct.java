@@ -84,6 +84,7 @@ public class PaperProduct extends AppCompatActivity {
         setContentView(R.layout.activity_paper_product);
 
         toolbar = findViewById(R.id.toolbar_paper_product);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         paper_prod_vp = (ViewPager2) findViewById(R.id.viewpager_paper_product);
@@ -193,7 +194,7 @@ public class PaperProduct extends AppCompatActivity {
                         }
                     }
                 }
-                                            paperProductAdapter.notifyItemInserted(paperProductModelList.size() - 1);
+                                            paperProductAdapter.notifyItemInserted(paperProductModelList.size()-1);
             }
 
                         @Override
