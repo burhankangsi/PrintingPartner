@@ -72,7 +72,7 @@ public class PreviousOrdersFrag extends Fragment {
         prev_ord_rv.setLayoutManager(layoutManager);
         prev_ord_rv.setAdapter(prevOrdFragAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
        // databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,25 +103,25 @@ public class PreviousOrdersFrag extends Fragment {
                             for (DataSnapshot fileName : time.getChildren()){
 
                                 for (DataSnapshot attributes : fileName.getChildren()) {
-                                    if (attributes.getKey().equals("credits")){
+                                    if (attributes.getKey().equals("price")){
                                         recentOrdModel.setItemPrice(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")){
+                                    if (attributes.getKey().equals("order_no")){
                                         recentOrdModel.setOrd_no(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("paper_color")){
+                                    if (attributes.getKey().equals("CustName")){
                                         recentOrdModel.setFileName(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("gsm")){
+                                    if (attributes.getKey().equals("location")){
                                         recentOrdModel.setLocation(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("image")){
                                         recentOrdModel.setCust_image(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("pages")){
+                                    if (attributes.getKey().equals("no_of_pages")){
                                         recentOrdModel.setNo_pages(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("paper_color")){
+                                    if (attributes.getKey().equals("no_of_docs")){
                                         recentOrdModel.setNo_docs(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("status")){

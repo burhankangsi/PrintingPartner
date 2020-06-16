@@ -112,7 +112,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Details");
       //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -147,29 +147,31 @@ public class DetailsActivity extends AppCompatActivity {
                                 for (DataSnapshot attributes : fileName.getChildren()) {
                                     if (attributes.getKey().equals("credits")) {
                                         recentOrdModel.setCredits(attributes.getValue().toString());
+                                        credits.setText(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("paper_size")) {
                                         recentOrdModel.setPaper_size(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("order_no")) {
                                         recentOrdModel.setOrd_no(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("gsm")) {
                                         recentOrdModel.setGSM(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("image")) {
                                         recentOrdModel.setDoc_image(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("no_of_docs")) {
                                         recentOrdModel.setNo_of_docs(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("no_of_pages")) {
                                         recentOrdModel.setNo_of_pages(attributes.getValue().toString());
+                                        no_of_pages.setText(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("paper_color")) {
                                         recentOrdModel.setPaper_color(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("status")) {
+                                    if (attributes.getKey().equals("orientation")) {
                                         recentOrdModel.setOrientation(attributes.getValue().toString());
                                     }
 

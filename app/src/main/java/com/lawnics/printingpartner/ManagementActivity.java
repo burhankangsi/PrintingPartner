@@ -88,7 +88,7 @@ public class ManagementActivity extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -137,7 +137,7 @@ public class ManagementActivity extends AppCompatActivity {
 //                                                    if (attributes.getKey().equals("pages")) {
 //                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
 //                                                    }
-                                    if (attributes.getKey().equals("paper_color")) {
+                                    if (attributes.getKey().equals("paper_type")) {
                                         recentOrdModel.setPaper_type(attributes.getValue().toString());
                                     }
 //                                                    if (attributes.getKey().equals("status")) {

@@ -92,7 +92,7 @@ public class PaperQualityActivity_color extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Management");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -140,7 +140,7 @@ public class PaperQualityActivity_color extends AppCompatActivity {
 //                                                    if (attributes.getKey().equals("pages")) {
 //                                                        recentOrdModel.setNo_of_pages(attributes.getValue().toString());
 //                                                    }
-                                    if (attributes.getKey().equals("paper_color")) {
+                                    if (attributes.getKey().equals("description")) {
                                         recentOrdModel.setDescription(attributes.getValue().toString());
                                     }
 //                                                    if (attributes.getKey().equals("status")) {

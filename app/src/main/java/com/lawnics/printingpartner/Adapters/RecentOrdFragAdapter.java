@@ -89,6 +89,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
             viewHolder1.recent_day.setText(re.getDate_recent());
             viewHolder1.recent_time.setText(re.getTime());
             viewHolder1.date_card.setVisibility(View.VISIBLE);
+
             RecentOrdModel single_bid_item = itemList.get(position);
             viewHolder1.cust_name.setText(single_bid_item.getFileName());
             viewHolder1.order_no.setText(single_bid_item.getOrd_no());
@@ -98,7 +99,7 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
             viewHolder1.price.setText(single_bid_item.getItemPrice());
             viewHolder1.time.setText(single_bid_item.getTime());
 
-            Picasso.get().load(single_bid_item.getCust_image()).into(viewHolder1.cust_img);
+            Picasso.get().load(single_bid_item.getCust_image()).into(((ViewHolder1) holder).cust_img);
 
             viewHolder1.details.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,11 +113,11 @@ public class RecentOrdFragAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View view) {
 
-                    //new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
+                    new RetrievePDFStream(single_bid_item.getFilename()).execute(single_bid_item.getFile_path());
 
                     //Intent intent = new Intent(mContext, RecentOrdersFragCompletedAdapter.class);
                     //mContext.startActivity(intent);
-                    pos = position;
+                   // pos = position;
 
                 }
             });

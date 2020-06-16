@@ -69,7 +69,7 @@ public class RecentOrdersFrag extends Fragment {
 
         recent_ord_rv.setLayoutManager(layoutManager);
         recent_ord_rv.setAdapter(recentOrdFragAdapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
       //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,35 +101,36 @@ public class RecentOrdersFrag extends Fragment {
                         for (DataSnapshot time : date.getChildren()) {
                             recentOrdModel.setTime(time.getKey());
                             for (DataSnapshot fileName : time.getChildren()) {
-                                recentOrdModel.setFilename(fileName.getKey());
+                               recentOrdModel.setFilename(fileName.getKey());
+                                //recentOrdModel.setFileName((fileName.getValue().toString()));
                                 //   RecentOrdModel recentOrdModel = new RecentOrdModel(fileName.getKey());
                                 for (DataSnapshot attributes : fileName.getChildren()) {
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("price")) {
                                         recentOrdModel.setItemPrice(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("order_no")) {
                                         recentOrdModel.setOrd_no(attributes.getValue().toString());
                                     }
 
-                                    if (attributes.getKey().equals("paper_color")) {
+                                    if (attributes.getKey().equals("CustName")) {
                                         recentOrdModel.setFileName(attributes.getValue().toString());
                                     }
                                     // This one ok
-                                    if (attributes.getKey().equals("gsm")) {
+                                    if (attributes.getKey().equals("location")) {
                                         recentOrdModel.setLocation(attributes.getValue().toString());
                                     }
 
                                     if (attributes.getKey().equals("image")) {
                                         recentOrdModel.setCust_image(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("pages")) {
+                                    if (attributes.getKey().equals("no_of_pages")) {
                                         recentOrdModel.setNo_pages(attributes.getValue().toString());
                                     }
 
-                                    if (attributes.getKey().equals("paper_color")) {
+                                    if (attributes.getKey().equals("no_of_docs")) {
                                         recentOrdModel.setNo_docs(attributes.getValue().toString());
                                     }
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("status")) {
                                         recentOrdModel.setStatus_time(attributes.getValue().toString());
                                     }
                                     if (attributes.getKey().equals("file")) {

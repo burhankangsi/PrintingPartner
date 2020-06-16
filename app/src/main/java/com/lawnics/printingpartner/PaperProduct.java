@@ -136,7 +136,7 @@ public class PaperProduct extends AppCompatActivity {
 //            }
 //        });
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -179,7 +179,7 @@ public class PaperProduct extends AppCompatActivity {
                                         urls.add(url);
                                         new LoadImagesTask();
                                     }
-                                    if (attributes.getKey().equals("pages")) {
+                                    if (attributes.getKey().equals("no_of_pages")) {
                                         //recentOrdModel.setPaper_size(attributes.getValue().toString());
                                         no_of_pages.setText(attributes.getValue().toString());
                                     }

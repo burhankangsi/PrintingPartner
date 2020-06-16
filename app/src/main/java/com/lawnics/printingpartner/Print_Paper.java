@@ -92,7 +92,7 @@ public class Print_Paper extends AppCompatActivity {
 
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Details");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -132,15 +132,15 @@ public class Print_Paper extends AppCompatActivity {
                                         new LoadImagesTask();
                                     }
                                     // Copies
-                                    if (attributes.getKey().equals("credits")) {
+                                    if (attributes.getKey().equals("Copies")) {
                                         copies.setText(attributes.getValue().toString());
                                     }
                                     // Size
-                                    if (attributes.getKey().equals("gsm")) {
+                                    if (attributes.getKey().equals("paper_size")) {
                                         paper_size.setText(attributes.getValue().toString());
                                     }
                                     // Print Side
-                                    if (attributes.getKey().equals("status")) {
+                                    if (attributes.getKey().equals("print_side")) {
                                         print_side.setText(attributes.getValue().toString());
                                     }
 
@@ -156,7 +156,7 @@ public class Print_Paper extends AppCompatActivity {
                                     }
 
                                     //Orientation
-                                    if (attributes.getKey().equals("status")) {
+                                    if (attributes.getKey().equals("orientation")) {
                                         orientation.setText(attributes.getValue().toString());
                                     }
 
