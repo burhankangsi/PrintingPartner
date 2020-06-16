@@ -104,8 +104,11 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="15dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginStart="1dp"
                             android:id="@+id/iv_location_rec_ord_accepted"
-                            android:src="@drawable/ic_locationicon"/>
+                            android:src="@drawable/ic_locationicon"
+                            />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -127,6 +130,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="15dp"
+                            android:layout_marginTop="1dp"
                             android:id="@+id/iv_pages_rec_ord_accepted"
                             android:src="@drawable/ic_pagesicon"/>
 
@@ -135,7 +139,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_docs_cv_rec_ord_accepted"
                             android:text="2 doc"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="8dp"
                             android:textColor="@color/grey"
                             android:layout_weight="0.12"
                             />
@@ -158,6 +162,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="15dp"
+                            android:layout_marginTop="1dp"
                             android:id="@+id/iv_timr_rec_ord_accepted"
                             android:src="@drawable/ic_a4_icon_new"/>
 
@@ -167,7 +172,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/tv_time_cv_rec_ord_accepted"
                             android:text="12:40 PM"
-                            android:layout_marginLeft="2dp"
+                            android:layout_marginLeft="8dp"
                             android:textColor="@color/grey"
                             android:layout_weight="1"
                             />

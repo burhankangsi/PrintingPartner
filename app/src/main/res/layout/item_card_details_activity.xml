@@ -258,23 +258,23 @@
 
                     <TextView
                         android:id="@+id/tv_details_cv_price"
-                        android:layout_width="30dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="100"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:textColor="@color/colorPrimaryDark"
                         android:textStyle="bold" />
 
                     <TextView
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/tv_details_cv_credits"
                     android:textColor="@color/grey"
                     android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:padding="5dp"
+                    android:textSize="12sp"
+
                     android:layout_marginTop="2dp"
                     android:text="Credits"
                     android:layout_weight="0.5"/>
