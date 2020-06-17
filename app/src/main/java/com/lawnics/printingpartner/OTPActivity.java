@@ -42,7 +42,7 @@ public class OTPActivity extends AppCompatActivity {
     TextView otpto, timer, resend;
     PhoneAuthCredential credential;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    DatabaseReference reference = firebaseDatabase.getReference("Printing_partner");
+
     int tries = 1;
     private String mVerificationId;
     private OtpTextView editTextCode;
@@ -208,7 +208,7 @@ public class OTPActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.exists()) {
-                                        Intent intent = new Intent(OTPActivity.this, MainActivity.class);
+                                        Intent intent = new Intent(OTPActivity.this, OrderActivity.class);
                                         startActivity(intent);
                                         dialog.dismiss();
                                         finish();
@@ -228,7 +228,7 @@ public class OTPActivity extends AppCompatActivity {
                             });
 
                         } else {
-                            String message = "Somthing is wrong, we will fix it soon...";
+                            String message = "Something is wrong, we will fix it soon...";
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 message = "Invalid code entered...";

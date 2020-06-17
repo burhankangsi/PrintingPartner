@@ -6,6 +6,7 @@ package com.lawnics.printingpartner;
  * **/
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,6 +19,12 @@ import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.lawnics.printingpartner.Pref.DataProccessor;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -70,10 +77,36 @@ public class SplashScreen extends AppCompatActivity {
 
                     }
                     if (user!=null) {
-                        Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    } else {
+                        DataProccessor dataProccessor = new DataProccessor(SplashScreen.this);
+
+                        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+                        dataProccessor.setStr("uid", user1.getUid());
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner/" + user1.getUid());
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    Intent intent = new Intent(SplashScreen.this, OrderActivity.class);
+                                    startActivity(intent);
+
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent(SplashScreen.this, Verification1Activity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+                 else {
                         sleep(2000);
                         Intent intent = new Intent(SplashScreen.this, LanguageActivity.class);
                         startActivity(intent);

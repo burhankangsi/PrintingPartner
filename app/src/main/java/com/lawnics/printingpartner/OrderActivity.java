@@ -51,6 +51,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("");
         searchView = (SearchView)findViewById(R.id.search_view_order);
         setSupportActionBar(toolbar);
 
