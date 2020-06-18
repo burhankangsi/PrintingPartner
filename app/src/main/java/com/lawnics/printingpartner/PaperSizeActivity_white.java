@@ -25,7 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lawnics.printingpartner.Adapters.DetailsActivityAdapter;
 import com.lawnics.printingpartner.Adapters.PaperSize_white_Adapter;
+import com.lawnics.printingpartner.Adapters.Paper_quality_col_adapter;
 import com.lawnics.printingpartner.Model.DetailActivityModel;
+import com.lawnics.printingpartner.Model.PaperQual_col_Model;
 import com.lawnics.printingpartner.Model.PaperSize_wh_Model;
 
 import java.util.ArrayList;
@@ -95,7 +97,7 @@ public class PaperSizeActivity_white extends AppCompatActivity {
 
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Management");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Management");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -163,7 +165,35 @@ public class PaperSizeActivity_white extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
+        PaperSize_wh_Model recentOrdModel = new PaperSize_wh_Model();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot date:dataSnapshot.getChildren()){
+                    for(DataSnapshot time:date.getChildren()){
+                        for(DataSnapshot paper_type:time.getChildren()){
+                            recentOrdModel.setPaperType(String.valueOf(paper_type.getKey()));
+                            recentOrdModel.setDoc_img(String.valueOf(paper_type.child("doc_image").getValue()));
+                            recentOrdModel.setDescriptions(String.valueOf(paper_type.child("description").getValue()));
+                        }
+                        paperSizeWhModelList.add(recentOrdModel);
+                    }
+                }
+                paperSize_white_adapter = new PaperSize_white_Adapter(PaperSizeActivity_white.this, paperSizeWhModelList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PaperSizeActivity_white.this);
+
+                rv_paper_size_wh.setLayoutManager(layoutManager);
+                rv_paper_size_wh.setAdapter(paperSize_white_adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
                 }
 
             }

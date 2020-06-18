@@ -23,9 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lawnics.printingpartner.Adapters.DetailsActivityAdapter;
+import com.lawnics.printingpartner.Adapters.Management_Adapter;
 import com.lawnics.printingpartner.Adapters.Paper_quality_col_adapter;
 import com.lawnics.printingpartner.Adapters.Paper_quality_wh_adapter;
 import com.lawnics.printingpartner.Model.DetailActivityModel;
+import com.lawnics.printingpartner.Model.ManagementModel;
 import com.lawnics.printingpartner.Model.PaperQual_col_Model;
 import com.lawnics.printingpartner.Model.PaperQual_wh_Model;
 
@@ -65,11 +67,6 @@ public class PaperQualityActivity_color extends AppCompatActivity {
 //        decline_detail = (AppCompatButton) findViewById(R.id.btn_decline_details);
 
 
-        paper_quality_col_adapter = new Paper_quality_col_adapter(PaperQualityActivity_color.this, paperQualColModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PaperQualityActivity_color.this);
-
-        rv_paper_qual_col.setLayoutManager(layoutManager);
-        rv_paper_qual_col.setAdapter(paper_quality_col_adapter);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +89,7 @@ public class PaperQualityActivity_color extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Management");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Management");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -161,7 +158,35 @@ public class PaperQualityActivity_color extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
+        PaperQual_col_Model recentOrdModel = new PaperQual_col_Model();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot date:dataSnapshot.getChildren()){
+                    for(DataSnapshot time:date.getChildren()){
+                        for(DataSnapshot paper_type:time.getChildren()){
+                            recentOrdModel.setPaper_type(String.valueOf(paper_type.getKey()));
+                            recentOrdModel.setDoc_img(String.valueOf(paper_type.child("doc_image").getValue()));
+                            recentOrdModel.setDescription(String.valueOf(paper_type.child("description").getValue()));
+                        }
+                        paperQualColModelList.add(recentOrdModel);
+                    }
+                }
+                paper_quality_col_adapter = new Paper_quality_col_adapter(PaperQualityActivity_color.this, paperQualColModelList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PaperQualityActivity_color.this);
+
+                rv_paper_qual_col.setLayoutManager(layoutManager);
+                rv_paper_qual_col.setAdapter(paper_quality_col_adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
                 }
 
 

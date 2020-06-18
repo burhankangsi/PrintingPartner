@@ -10,6 +10,7 @@ public class PaperSize_wh_Model {
         this.doc_img = doc_img;
         this.isChecked = isChecked;
     }
+    public PaperSize_wh_Model(){}
 
     String descriptions;
 

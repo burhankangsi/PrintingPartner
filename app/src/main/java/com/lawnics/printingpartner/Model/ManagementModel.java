@@ -1,7 +1,7 @@
 package com.lawnics.printingpartner.Model;
 
 public class ManagementModel {
-
+    public ManagementModel(){}
     public ManagementModel(String s) {
         this.paper_type = s;
     }

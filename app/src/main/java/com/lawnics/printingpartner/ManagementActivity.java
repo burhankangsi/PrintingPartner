@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -63,11 +64,6 @@ public class ManagementActivity extends AppCompatActivity {
 //        decline_detail = (AppCompatButton) findViewById(R.id.btn_decline_details);
 
 
-        management_adapter = new Management_Adapter(ManagementActivity.this, managementModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ManagementActivity.this);
-
-        rv_management.setLayoutManager(layoutManager);
-        rv_management.setAdapter(management_adapter);
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +84,7 @@ public class ManagementActivity extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Management");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -158,8 +154,36 @@ public class ManagementActivity extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
+        ManagementModel recentOrdModel = new ManagementModel();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot date:dataSnapshot.getChildren()){
+                    for(DataSnapshot time:date.getChildren()){
+                        for(DataSnapshot paper_type:time.getChildren()){
+                            recentOrdModel.setPaper_type(String.valueOf(paper_type.getKey()));
+                            recentOrdModel.setDoc_img(String.valueOf(paper_type.child("doc_image").getValue()));
+                        }
+                        managementModelList.add(recentOrdModel);
+                    }
                 }
+                management_adapter = new Management_Adapter(ManagementActivity.this, managementModelList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ManagementActivity.this);
+
+                rv_management.setLayoutManager(layoutManager);
+                rv_management.setAdapter(management_adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
             }
 

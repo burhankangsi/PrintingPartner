@@ -24,9 +24,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.lawnics.printingpartner.Adapters.DetailsActivityAdapter;
+import com.lawnics.printingpartner.Adapters.Paper_quality_col_adapter;
 import com.lawnics.printingpartner.Adapters.Paper_quality_wh_adapter;
 import com.lawnics.printingpartner.Adapters.Papersize_color_Adapter;
 import com.lawnics.printingpartner.Model.DetailActivityModel;
+import com.lawnics.printingpartner.Model.PaperQual_col_Model;
 import com.lawnics.printingpartner.Model.PaperQual_wh_Model;
 import com.lawnics.printingpartner.Model.PaperSize_col_Model;
 
@@ -97,7 +99,7 @@ public class PaperQualityActivity_white extends AppCompatActivity {
 //        });
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Management");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Management");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -166,7 +168,35 @@ public class PaperQualityActivity_white extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
+                    });*/
+        PaperQual_wh_Model recentOrdModel = new PaperQual_wh_Model();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot date:dataSnapshot.getChildren()){
+                    for(DataSnapshot time:date.getChildren()){
+                        for(DataSnapshot paper_type:time.getChildren()){
+                            recentOrdModel.setGsm(String.valueOf(paper_type.child("gsm").getValue()));
+                            recentOrdModel.setDoc_img(String.valueOf(paper_type.child("doc_image").getValue()));
+                            recentOrdModel.setDescription(String.valueOf(paper_type.child("description").getValue()));
+                        }
+                        paperQualWhModelList.add(recentOrdModel);
+                    }
+                }
+                paper_quality_wh_adapter = new Paper_quality_wh_adapter(PaperQualityActivity_white.this, paperQualWhModelList);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PaperQualityActivity_white.this);
+
+                rv_paper_qual_wh.setLayoutManager(layoutManager);
+                rv_paper_qual_wh.setAdapter(paper_quality_wh_adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
                 }
 
             }

@@ -45,7 +45,7 @@ public class Paper_quality_wh_adapter extends RecyclerView.Adapter<Paper_quality
     @Override
     public void onBindViewHolder(@NonNull Paper_quality_wh_adapter.ViewHolder holder, int position) {
         PaperQual_wh_Model single_bid_item = itemList.get(position);
-        holder.paper_type.setText(single_bid_item.getGsm());
+        holder.paper_type.setText(single_bid_item.getGsm()+" GSM");
         holder.description.setText(single_bid_item.getDescription());
 
         Picasso.get().load(single_bid_item.getDoc_img()).into(holder.prod_img);

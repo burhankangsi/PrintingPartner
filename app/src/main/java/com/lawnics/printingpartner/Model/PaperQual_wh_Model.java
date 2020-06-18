@@ -2,7 +2,7 @@ package com.lawnics.printingpartner.Model;
 
 public class PaperQual_wh_Model {
     String gsm;
-
+    public PaperQual_wh_Model(){}
     public PaperQual_wh_Model(String s) {
         this.gsm = s;
     }
