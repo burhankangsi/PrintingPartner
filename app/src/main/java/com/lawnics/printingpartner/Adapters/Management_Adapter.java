@@ -39,19 +39,21 @@ public class Management_Adapter extends RecyclerView.Adapter<Management_Adapter.
 
     @Override
     public void onBindViewHolder(@NonNull Management_Adapter.ViewHolder holder, int position) {
-
         ManagementModel single_bid_item = itemList.get(position);
         holder.paper_type.setText(single_bid_item.getPaper_type());
+        System.out.println("Pap"+single_bid_item.getPaper_type());
       //  holder.description.setText(single_bid_item.getDescription());
 
-        Picasso.get().load(single_bid_item.getDoc_img()).into(holder.prod_img);
+        holder.prod_img.setImageResource(R.drawable.ic_white_page_icon);
         Picasso.get().load(single_bid_item.getRight_arrow()).into(holder.menu_iv_manage);
 
         holder.menu_iv_manage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
+                intent.putExtra("paper_type",single_bid_item.getPaper_type());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
             }
         });
 
@@ -59,6 +61,8 @@ public class Management_Adapter extends RecyclerView.Adapter<Management_Adapter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, PaperQualityActivity_white.class);
+                intent.putExtra("paper_type",single_bid_item.getPaper_type());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

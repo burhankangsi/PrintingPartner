@@ -8,6 +8,7 @@ package com.lawnics.printingpartner;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -24,7 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonObject;
 import com.lawnics.printingpartner.Pref.DataProccessor;
+
+import org.json.JSONObject;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -86,15 +90,14 @@ public class SplashScreen extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()) {
+                                    retriveManagement();
                                     Intent intent = new Intent(SplashScreen.this, OrderActivity.class);
                                     startActivity(intent);
-
                                     finish();
                                 } else {
                                     Intent intent = new Intent(SplashScreen.this, Verification1Activity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
-                                    
                                     finish();
                                 }
                             }
@@ -108,6 +111,7 @@ public class SplashScreen extends AppCompatActivity {
                     }
                  else {
                         sleep(2000);
+                        managementDataRetrive();
                         Intent intent = new Intent(SplashScreen.this, LanguageActivity.class);
                         startActivity(intent);
                         finish();
@@ -118,5 +122,86 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         timer.start();
+    }
+    /*public void managementDataRetrive(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Management",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot paper_type:dataSnapshot.getChildren()){
+                    String paper = paper_type.getKey();
+                    for(DataSnapshot gsm:paper_type.getChildren()){
+                        editor.putString(paper + ":"+ gsm.getKey(), paper + ":"+ gsm.getKey()+":a4:"+String.valueOf(gsm.child("a4").getValue())+":legal:"+String.valueOf(gsm.child("legal").getValue()));
+
+                    }
+
+                }
+                editor.commit();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+    public void managementDataRetrive(){
+        SharedPreferences papertype = getSharedPreferences("paper_type",MODE_PRIVATE);
+        SharedPreferences paper_gsm = getSharedPreferences("paper_gsm",MODE_PRIVATE);
+        SharedPreferences paper_size = getSharedPreferences("paper_size",MODE_PRIVATE);
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot paper_type:dataSnapshot.getChildren()){
+                    String paper = paper_type.getKey();
+                    papertype.edit().putString(paper_type.getKey(),paper_type.getKey()).commit();
+                    for(DataSnapshot gsm:paper_type.getChildren()){
+                        //editor.putString(paper + ":"+ gsm.getKey(), paper + ":"+ gsm.getKey()+":a4:"+ gsm.child("a4").getValue() +":legal:"+ gsm.child("legal").getValue());
+                        paper_gsm.edit().putString(paper_type.getKey()+gsm.getKey(),gsm.getKey()).commit();
+                        for(DataSnapshot paperSize:gsm.getChildren()){
+                            paper_size.edit().putString(paper_type.getKey()+gsm.getKey()+paperSize.getKey(),paperSize.getKey()+":"+paperSize.getValue()).commit();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void retriveManagement(){
+        SharedPreferences papertype = getSharedPreferences("paper_type",MODE_PRIVATE);
+        SharedPreferences paper_gsm = getSharedPreferences("paper_gsm",MODE_PRIVATE);
+        SharedPreferences paper_size = getSharedPreferences("paper_size",MODE_PRIVATE);
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("Printing_partner");
+        databaseReference1.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Management").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot paper_type:dataSnapshot.getChildren()){
+                    String paper = paper_type.getKey();
+                    papertype.edit().putString(paper_type.getKey(),paper_type.getKey()).commit();
+                    for(DataSnapshot gsm:paper_type.getChildren()){
+                        //editor.putString(paper + ":"+ gsm.getKey(), paper + ":"+ gsm.getKey()+":a4:"+ gsm.child("a4").getValue() +":legal:"+ gsm.child("legal").getValue());
+                        paper_gsm.edit().putString(paper_type.getKey()+gsm.getKey(),gsm.getKey()).commit();
+                        for(DataSnapshot paperSize:gsm.getChildren()){
+                            paper_size.edit().putString(paper_type.getKey()+gsm.getKey()+paperSize.getKey(),paperSize.getKey()+":"+paperSize.getValue()).commit();
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

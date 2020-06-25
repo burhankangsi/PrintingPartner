@@ -1,15 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#e0e0e0"
+        android:visibility="gone"
+        android:id="@+id/date_recent_card_accepted">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <TextView
+                android:id="@+id/recent_card_time_accepted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="11:00 to 11:30"
+                android:textSize="16dp"
+                android:textColor="#000"
+                android:layout_marginStart="16dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"></TextView>
+
+            <TextView
+                android:id="@+id/recent_card_day_accepted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="left"
+                android:text="Today"
+                android:textSize="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="#000"></TextView>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:id="@+id/card_view_recent_order_accepted">
 
         <LinearLayout
@@ -182,7 +221,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_details_cv_rec_ord_accepted"
-                        android:textColor="@color/green"
+                        android:textColor="#65b141"
                         android:layout_weight="1"
                         android:clickable="true"
                         android:text="Accepted"
@@ -211,7 +250,8 @@
                 android:id="@+id/btn_cv_rec_orders_complete"
                 android:layout_marginRight="15dp"
                 android:text="Complete"
-                android:background="@color/green"
+                android:textAllCaps="false"
+                android:background="#65b141"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_gravity="right"

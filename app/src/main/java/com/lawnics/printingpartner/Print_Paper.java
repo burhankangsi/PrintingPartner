@@ -10,12 +10,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +51,9 @@ public class Print_Paper extends AppCompatActivity {
 
     private Context mContext;
     private TextView name, copies, paper_size, orientation, print_side, print_color, paper_color;
-    private SwipeRefreshLayout swipe;
+    private Button swipe;
 
-    List<Print_Paper_Model> printPaperModelList;
+    List<String> printPaperModelList;
     List<String> urls = new ArrayList<>();
 
 
@@ -58,7 +61,6 @@ public class Print_Paper extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print__paper);
-
         toolbar = findViewById(R.id.toolbar_print_paper);
         setSupportActionBar(toolbar);
 
@@ -74,25 +76,30 @@ public class Print_Paper extends AppCompatActivity {
         print_color = (TextView) findViewById(R.id.tv_print_paper_print_color);
         paper_color = (TextView) findViewById(R.id.tv_print_paper_paper_color);
 
-        swipe = (SwipeRefreshLayout) findViewById(R.id.swipe_print_paper);
+        swipe = (Button) findViewById(R.id.swipe_print_paper);
      //   decline_detail = (AppCompatButton) findViewById(R.id.btn_decline_details);
-
-
-        printPaperAdapter = new PrintPaperAdapter(Print_Paper.this, printPaperModelList);
+        name.setText(getIntent().getStringExtra("Customer Name"));
+        copies.setText(getIntent().getStringExtra("Copies"));
+        paper_size.setText(getIntent().getStringExtra("Paper Size"));
+        orientation.setText(getIntent().getStringExtra("Orientation"));
+        print_side.setText(getIntent().getStringExtra("Print Side"));
+        print_color.setText(getIntent().getStringExtra("Print Color"));
+        paper_color.setText(getIntent().getStringExtra("Page Color"));
 
         List<String> images = getIntent().getStringArrayListExtra("images");
         for (String path : images){
             System.out.println(path);
-            printPaperModelList.add(new Print_Paper_Model(path));
+            printPaperModelList.add(path);
         }
-    //    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Print_Paper.this);
+        printPaperAdapter = new PrintPaperAdapter(Print_Paper.this, printPaperModelList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Print_Paper.this);
 //
-       // print_paper_vp.setLayoutManager(layoutManager);
+        //print_paper_vp.setLayoutManager(layoutManager);
         print_paper_vp.setAdapter(printPaperAdapter);
 
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Details");
+        /*databaseReference = FirebaseDatabase.getInstance().getReference("Details");
         //  databaseReference.child("abcd").setValue("1234");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,7 +136,6 @@ public class Print_Paper extends AppCompatActivity {
                                         //  recentOrdModel.setCredits(attributes.getValue().toString());
                                         String url = attributes.getValue().toString();
                                         urls.add(url);
-                                        new LoadImagesTask();
                                     }
                                     // Copies
                                     if (attributes.getKey().equals("Copies")) {
@@ -161,7 +167,7 @@ public class Print_Paper extends AppCompatActivity {
                                     }
 
                                 }
-                                printPaperModelList.add(recentOrdModel);
+
                             }
                         }
                     }
@@ -174,8 +180,8 @@ public class Print_Paper extends AppCompatActivity {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    });
-                }
+                    });*/
+    }
 
 
     public class LoadImagesTask extends AsyncTask<Void,Void,Void> {

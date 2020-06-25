@@ -23,12 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.lawnics.printingpartner.Adapters.DetailsActivityAdapter;
-import com.lawnics.printingpartner.Adapters.PaperSize_white_Adapter;
 import com.lawnics.printingpartner.Adapters.Papersize_color_Adapter;
-import com.lawnics.printingpartner.Model.DetailActivityModel;
 import com.lawnics.printingpartner.Model.PaperSize_col_Model;
-import com.lawnics.printingpartner.Model.PaperSize_wh_Model;
 
 import java.util.ArrayList;
 import java.util.List;

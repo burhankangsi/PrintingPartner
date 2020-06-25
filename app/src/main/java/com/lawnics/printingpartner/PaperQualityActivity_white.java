@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,12 +29,15 @@ import com.lawnics.printingpartner.Adapters.Paper_quality_col_adapter;
 import com.lawnics.printingpartner.Adapters.Paper_quality_wh_adapter;
 import com.lawnics.printingpartner.Adapters.Papersize_color_Adapter;
 import com.lawnics.printingpartner.Model.DetailActivityModel;
+import com.lawnics.printingpartner.Model.ManagementModel;
 import com.lawnics.printingpartner.Model.PaperQual_col_Model;
 import com.lawnics.printingpartner.Model.PaperQual_wh_Model;
 import com.lawnics.printingpartner.Model.PaperSize_col_Model;
+import com.lawnics.printingpartner.Model.PaperSize_wh_Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PaperQualityActivity_white extends AppCompatActivity {
 
@@ -47,7 +51,7 @@ public class PaperQualityActivity_white extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView back_btn;
     private RecyclerView rv_paper_qual_wh;
-
+    String papertypeStr;
 //    private TextView no_of_pages, credits;
 //    private AppCompatButton submit_paper_size_col;
 //    private CheckBox selectAll_paper_Size_col;
@@ -58,9 +62,7 @@ public class PaperQualityActivity_white extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paper_quality_white);
 
-        toolbar = findViewById(R.id.toolbar_paper_qual);
-        setSupportActionBar(toolbar);
-
+        papertypeStr = getIntent().getStringExtra("paper_type");
 
         paperQualWhModelList = new ArrayList<>();
         rv_paper_qual_wh = (RecyclerView) findViewById(R.id.rv_paper_qual_activity);
@@ -88,6 +90,46 @@ public class PaperQualityActivity_white extends AppCompatActivity {
                 finish();
             }
         });
+        /*SharedPreferences sharedPreferences = getSharedPreferences("Management",MODE_PRIVATE);
+        Map<String,?> entries= sharedPreferences.getAll();
+        //List<String> papertype = new ArrayList<>();
+        for(Map.Entry<String,?> entry : entries.entrySet()){
+            String entireString = entry.getValue().toString();
+            String[] paper_type = entireString.split(":",2);
+            String[] gsm = paper_type[1].split(":a4:",2);
+            String[] a4 = gsm[1].split(":legal:",2);
+            //databaseReference.child(user.getUid()).child("Management").child(paper_type[0]).child(gsm[0]).child("a4").setValue(a4[0]);
+            //databaseReference.child(user.getUid()).child("Management").child(paper_type[0]).child(gsm[0]).child("legal").setValue(a4[1]);
+            PaperQual_wh_Model paperQual_wh_model = new PaperQual_wh_Model();
+            if(papertype.equals(paper_type[0])){
+                paperQual_wh_model.setGsm(gsm[0]);
+                paperQual_wh_model.setPaper_type(paper_type[0]);
+                paperQualWhModelList.add(paperQual_wh_model);
+            }
+
+        }*/
+        List<String> listGsm = new ArrayList<>();
+        SharedPreferences papertype = getSharedPreferences("paper_type",MODE_PRIVATE);
+        SharedPreferences paper_gsm = getSharedPreferences("paper_gsm",MODE_PRIVATE);
+        SharedPreferences paper_size = getSharedPreferences("paper_size",MODE_PRIVATE);
+        Map<String,?> paper_type = papertype.getAll();
+        Map<String,?> gsm = paper_gsm.getAll();
+        Map<String,?> size = paper_size.getAll();
+        for(Map.Entry<String,?> paperType:paper_type.entrySet()){
+            if(paperType.getValue().equals(papertypeStr)){
+                for(Map.Entry<String,?> paperGsm:gsm.entrySet()){
+                    PaperQual_wh_Model paperQual_wh_model = new PaperQual_wh_Model();
+                    if(paperGsm.getKey().split(paperGsm.getValue().toString())[0].equals(paperType.getValue())){
+                        if(!listGsm.contains(paperGsm.getValue().toString())){
+                            paperQual_wh_model.setGsm(paperGsm.getValue().toString());
+                            paperQual_wh_model.setPaper_type(paperType.getValue().toString());
+                            paperQualWhModelList.add(paperQual_wh_model);
+                            listGsm.add(paperGsm.getValue().toString());
+                        }
+                    }
+                }
+            }
+        }
 
 //        decline_detail.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -169,7 +211,7 @@ public class PaperQualityActivity_white extends AppCompatActivity {
 
                         }
                     });*/
-        PaperQual_wh_Model recentOrdModel = new PaperQual_wh_Model();
+        /*PaperQual_wh_Model recentOrdModel = new PaperQual_wh_Model();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
             @Override
@@ -196,8 +238,8 @@ public class PaperQualityActivity_white extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
-                }
+        });*/
+    }
 
-            }
+}
 

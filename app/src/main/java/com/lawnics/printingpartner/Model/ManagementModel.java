@@ -2,9 +2,7 @@ package com.lawnics.printingpartner.Model;
 
 public class ManagementModel {
     public ManagementModel(){}
-    public ManagementModel(String s) {
-        this.paper_type = s;
-    }
+    String paper_type;
 
     public String getPaper_type() {
         return paper_type;
@@ -22,7 +20,7 @@ public class ManagementModel {
         this.doc_img = doc_img;
     }
 
-    String paper_type;
+
 
     public String getRight_arrow() {
         return right_arrow;
@@ -33,12 +31,6 @@ public class ManagementModel {
     }
 
     String right_arrow;
-
-    public ManagementModel(String paper_type, String doc_img, String arrow) {
-        this.paper_type = paper_type;
-        this.doc_img = doc_img;
-        this.right_arrow = arrow;
-    }
 
     String doc_img;
 }

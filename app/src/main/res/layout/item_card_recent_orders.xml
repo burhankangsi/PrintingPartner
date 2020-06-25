@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:cardBackgroundColor="#c0c0c0"
+        app:cardBackgroundColor="#e0e0e0"
         android:visibility="gone"
         android:id="@+id/date_recent_card">
         <RelativeLayout
@@ -22,10 +22,10 @@
                 android:text="11:00 to 11:30"
                 android:textSize="16dp"
                 android:textColor="#000"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="12dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="@dimen/ccp_padding"
-                android:layout_marginBottom="@dimen/ccp_padding"></TextView>
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"></TextView>
 
             <TextView
                 android:id="@+id/recent_card_day"
@@ -36,7 +36,7 @@
                 android:text="Today"
                 android:textSize="16dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="@dimen/ccp_padding"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:textColor="#000"></TextView>
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         app:cardBackgroundColor="#ffffff"
         android:id="@+id/card_view_recent_order">
 
@@ -219,7 +219,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_details_cv_rec_ord"
-                        android:textColor="@color/grey"
+                        android:textColor="#b0c2fe"
                         android:layout_weight="1"
                         android:clickable="true"
                         android:text="Details"
@@ -254,9 +254,10 @@
                     android:id="@+id/btn_cv_rec_orders_btn1"
                     android:layout_marginLeft="8dp"
                     android:text="Accept"
-                    android:background="@color/green"
+                    android:background="#65B141"
                     android:textColor="@color/white"
                     android:textStyle="bold"
+                    android:textAllCaps="false"
                     android:layout_weight="1"
                     />
 
@@ -267,8 +268,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="8dp"
                     android:text="Decline"
-                    android:background="@color/red"
+                    android:background="#E14343"
                     android:textColor="@color/white"
+                    android:textAllCaps="false"
                     android:textStyle="bold"
                     android:layout_weight="1"
                     />

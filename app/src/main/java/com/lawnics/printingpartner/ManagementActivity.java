@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -32,6 +33,7 @@ import com.lawnics.printingpartner.Model.PaperQual_col_Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ManagementActivity extends AppCompatActivity {
 
@@ -40,7 +42,7 @@ public class ManagementActivity extends AppCompatActivity {
     Management_Adapter management_adapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    List<ManagementModel> managementModelList;
+    ArrayList<ManagementModel> managementModelList1;
 
     private Toolbar toolbar;
     private ImageView back_btn;
@@ -51,10 +53,9 @@ public class ManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_management);
 
-        toolbar = findViewById(R.id.toolbar_management);
-        setSupportActionBar(toolbar);
 
-        managementModelList = new ArrayList<>();
+        managementModelList1 = new ArrayList<>();
+
         rv_management = (RecyclerView) findViewById(R.id.rv_management);
 
         back_btn = (ImageView) findViewById(R.id.back_btn_act_management);
@@ -63,6 +64,11 @@ public class ManagementActivity extends AppCompatActivity {
 //        accept_detail = (AppCompatButton) findViewById(R.id.btn_accept_details);
 //        decline_detail = (AppCompatButton) findViewById(R.id.btn_decline_details);
 
+        management_adapter = new Management_Adapter(ManagementActivity.this, managementModelList1);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ManagementActivity.this);
+
+        rv_management.setLayoutManager(layoutManager);
+        rv_management.setAdapter(management_adapter);
 
 
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +161,7 @@ public class ManagementActivity extends AppCompatActivity {
 
                         }
                     });*/
-        ManagementModel recentOrdModel = new ManagementModel();
+        /*ManagementModel recentOrdModel = new ManagementModel();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("Management").addValueEventListener(new ValueEventListener() {
             @Override
@@ -181,9 +187,41 @@ public class ManagementActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
+
+        /*SharedPreferences sharedPreferences = getSharedPreferences("Management",MODE_PRIVATE);
+        Map<String,?> entries= sharedPreferences.getAll();
+        List<String> papertype = new ArrayList<>();
+        for(Map.Entry<String,?> entry : entries.entrySet()){
+            String entireString = entry.getValue().toString();
+            String[] paper_type = entireString.split(":",2);
+            String[] gsm = paper_type[1].split(":a4:",2);
+            String[] a4 = gsm[1].split(":legal:",2);
+            //databaseReference.child(user.getUid()).child("Management").child(paper_type[0]).child(gsm[0]).child("a4").setValue(a4[0]);
+            //databaseReference.child(user.getUid()).child("Management").child(paper_type[0]).child(gsm[0]).child("legal").setValue(a4[1]);
+            ManagementModel managementModel = new ManagementModel();
+            if(!papertype.contains(paper_type[0])){
+                managementModel.setPaper_type(paper_type[0]);
+                int n = managementModelList1.size();
+                managementModelList1.add(n,managementModel);
+                papertype.add(paper_type[0]);
+            }
+
+        }*/
+        List<String> papertypelist = new ArrayList<>();
+        SharedPreferences papertype = getSharedPreferences("paper_type",MODE_PRIVATE);
+        Map<String,?> paper_type = papertype.getAll();
+        for(Map.Entry<String,?> paperType:paper_type.entrySet()){
+            ManagementModel managementModel = new ManagementModel();
+            if(!papertypelist.contains(paperType.getValue().toString())){
+                managementModel.setPaper_type(paperType.getValue().toString());
+                managementModelList1.add(managementModel);
+                papertypelist.add(paperType.getValue().toString());
+            }
+        }
+
     }
 
 
-            }
+}
 

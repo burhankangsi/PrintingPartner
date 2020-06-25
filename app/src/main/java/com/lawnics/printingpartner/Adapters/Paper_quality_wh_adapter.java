@@ -5,18 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lawnics.printingpartner.ManagementActivity;
 import com.lawnics.printingpartner.Model.PaperQual_wh_Model;
-import com.lawnics.printingpartner.Model.PaperSize_col_Model;
-import com.lawnics.printingpartner.OrderActivity;
-import com.lawnics.printingpartner.PaperSizeAct_color;
 import com.lawnics.printingpartner.PaperSizeActivity_white;
 import com.lawnics.printingpartner.R;
 import com.squareup.picasso.Picasso;
@@ -45,20 +40,32 @@ public class Paper_quality_wh_adapter extends RecyclerView.Adapter<Paper_quality
     @Override
     public void onBindViewHolder(@NonNull Paper_quality_wh_adapter.ViewHolder holder, int position) {
         PaperQual_wh_Model single_bid_item = itemList.get(position);
-        holder.paper_type.setText(single_bid_item.getGsm()+" GSM");
+        holder.paper_type.setText(single_bid_item.getGsm());
         holder.description.setText(single_bid_item.getDescription());
 
-        Picasso.get().load(single_bid_item.getDoc_img()).into(holder.prod_img);
+        holder.prod_img.setImageResource(R.drawable.ic_white_page_icon);
         Picasso.get().load(single_bid_item.getIv_right_arrow()).into(holder.menu_iv_paper_qual_wh);
 
         holder.menu_iv_paper_qual_wh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, PaperSizeActivity_white.class);
+                intent.putExtra("papertype",single_bid_item.getPaper_type());
+                intent.putExtra("gsm",single_bid_item.getGsm());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });
-
+        holder.paper_type.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, PaperSizeActivity_white.class);
+                intent.putExtra("papertype",single_bid_item.getPaper_type());
+                intent.putExtra("gsm",single_bid_item.getGsm());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        });
         holder.prod_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

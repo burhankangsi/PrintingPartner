@@ -1,5 +1,7 @@
 package com.lawnics.printingpartner.Model;
 
+import com.lawnics.printingpartner.RecentOrdersFrag;
+
 public class RecentOrdModel {
 
     //Whatever the attributes in the item of recent order item comes here
@@ -12,8 +14,80 @@ public class RecentOrdModel {
     String file_path;
     String filename;
     String date_recent;
+    String gsm;
+    String buyerId;
+    String copies;
+    String orientation;
+    String paper_side;
+    String paper_color;
+    String print_color;
+    String paper_size;
 
+    public String getPaper_size() {
+        return paper_size;
+    }
 
+    public void setPaper_size(String paper_size) {
+        this.paper_size = paper_size;
+    }
+
+    public String getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
+    }
+
+    public String getPaper_side() {
+        return paper_side;
+    }
+
+    public void setPaper_side(String paper_side) {
+        this.paper_side = paper_side;
+    }
+
+    public String getPaper_color() {
+        return paper_color;
+    }
+
+    public void setPaper_color(String paper_color) {
+        this.paper_color = paper_color;
+    }
+
+    public String getPrint_color() {
+        return print_color;
+    }
+
+    public void setPrint_color(String print_color) {
+        this.print_color = print_color;
+    }
+
+    public String getCopies() {
+        return copies;
+    }
+
+    public void setCopies(String copies) {
+        this.copies = copies;
+    }
+
+    public String getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(String buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public String getGsm() {
+        return gsm;
+    }
+
+    public void setGsm(String gsm) {
+        this.gsm = gsm;
+    }
+
+    public RecentOrdModel(){}
     public String getDate_recent() {
         return date_recent;
     }

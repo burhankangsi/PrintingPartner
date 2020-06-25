@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,14 @@ import com.lawnics.printingpartner.R;
 import com.lawnics.printingpartner.ui.gallery.GalleryViewModel;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,6 +60,7 @@ public class RecentOrdersFrag extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     List<RecentOrdModel> recentOrdModelList;
+    boolean flag = false;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -64,14 +72,9 @@ public class RecentOrdersFrag extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recentOrdModelList = new ArrayList<>();
         recent_ord_rv = (RecyclerView) view.findViewById(R.id.recentOrderrv);
-        recentOrdFragAdapter = new RecentOrdFragAdapter(getContext(),recentOrdModelList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-        recent_ord_rv.setLayoutManager(layoutManager);
-        recent_ord_rv.setAdapter(recentOrdFragAdapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Printing_partner");
       //  databaseReference.child("abcd").setValue("1234");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        /*databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot customerID : dataSnapshot.getChildren()) {
@@ -149,9 +152,82 @@ public class RecentOrdersFrag extends Fragment {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
+                    });*/
+        databaseReference = databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot buyerId : dataSnapshot.getChildren()) {
+                    DatabaseReference name = FirebaseDatabase.getInstance().getReference("Users").child(buyerId.getKey());
+                    name.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String buyerName = null;
+                            for (DataSnapshot b_name : dataSnapshot.getChildren()) {
+                                if (b_name.getKey().equals("first_name")) {
+                                    buyerName = b_name.getValue().toString();
+                                }
+                                if (b_name.getKey().equals("last_name")) {
+                                    buyerName = buyerName + " " + b_name.getValue().toString();
+                                }
+                            }
+
+                            for (DataSnapshot date : buyerId.getChildren()) {
+                                for (DataSnapshot time : date.getChildren()) {
+                                    RecentOrdModel recentOrdModel = new RecentOrdModel();
+                                    for (DataSnapshot file_name : time.getChildren()) {
+                                        try {
+                                            flag = false;
+                                            if (!file_name.child("status").getValue().equals("Completed") || file_name.child("status").getValue().equals("Rejected")) {
+                                                flag = true;
+                                                recentOrdModel.setCustName(buyerName);
+                                                recentOrdModel.setOrd_no(file_name.getKey());
+                                                recentOrdModel.setFile_path(file_name.child("file").getValue().toString());
+                                                recentOrdModel.setLocation(file_name.child("area").getValue().toString());
+                                                recentOrdModel.setNo_docs(String.valueOf(time.getChildrenCount()));
+                                                recentOrdModel.setNo_pages(file_name.child("pages").getValue().toString());
+                                                recentOrdModel.setItemPrice(file_name.child("credits").getValue().toString());
+                                                recentOrdModel.setTime(time.getKey());
+                                                recentOrdModel.setDate_recent(date.getKey());
+                                                recentOrdModel.setCust_image(file_name.child("image").getValue().toString());
+                                                recentOrdModel.setStatus(file_name.child("status").getValue().toString());
+                                                recentOrdModel.setBuyerId(buyerId.getKey());
+                                                recentOrdModel.setGsm(file_name.child("gsm").getValue().toString());
+                                                recentOrdModel.setCopies(file_name.child("copies").getValue().toString());
+                                                recentOrdModel.setOrientation(file_name.child("orientation").getValue().toString());
+                                                recentOrdModel.setPaper_side(file_name.child("paper_side").getValue().toString());
+                                                recentOrdModel.setPaper_color(file_name.child("paper_color").getValue().toString());
+                                                recentOrdModel.setPrint_color(file_name.child("print_color").getValue().toString());
+                                                recentOrdModel.setPaper_size(file_name.child("paper_size").getValue().toString());
+                                            }
+                                        } catch (Exception e) {}
+
+                                    }if(flag){
+                                        recentOrdModelList.add(recentOrdModel);
+                                    }
+                                }
+                            }
+                            recentOrdFragAdapter = new RecentOrdFragAdapter(getContext(), recentOrdModelList);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                            layoutManager.setReverseLayout(true);
+                            layoutManager.setStackFromEnd(true);
+                            recent_ord_rv.setLayoutManager(layoutManager);
+                            recent_ord_rv.setAdapter(recentOrdFragAdapter);
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
                     });
                 }
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getContext(),"On Cancelled",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}
 
 
 

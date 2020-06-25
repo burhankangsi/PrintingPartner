@@ -1,6 +1,8 @@
 package com.lawnics.printingpartner.Adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +21,9 @@ import java.util.List;
 public class PrintPaperAdapter extends RecyclerView.Adapter<PrintPaperAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Print_Paper_Model> itemList;
+    private List<String> itemList;
 
-    public PrintPaperAdapter(Context mContext, List<Print_Paper_Model> itemList)
+    public PrintPaperAdapter(Context mContext, List<String> itemList)
     {
         this.mContext = mContext;
         this.itemList = itemList;
@@ -35,8 +37,8 @@ public class PrintPaperAdapter extends RecyclerView.Adapter<PrintPaperAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Print_Paper_Model single_bid_item = itemList.get(position);
-        Picasso.get().load(single_bid_item.getImages()).into(holder.prod_img);
+        Bitmap b= BitmapFactory.decodeFile(itemList.get(position));
+        holder.prod_img.setImageBitmap(b);
 
     }
 
